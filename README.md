@@ -1,2 +1,2 @@
-# theme_bootstrap_gov
-TYPO3 Theme based on the theme bootstrap package. Optimized for governmental use.
+# Master-BLE
+TYPO3 Master-Configuration for BLE-Websites
