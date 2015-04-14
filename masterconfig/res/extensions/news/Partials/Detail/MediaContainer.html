@@ -1,0 +1,16 @@
+<f:if condition="{media}">
+	<!-- media files -->
+	<figure>
+		<f:for each="{media}" as="mediaElement">
+				<f:if condition="{mediaElement.type} == 0">
+					<f:render partial="Detail/MediaImage" arguments="{mediaElement: mediaElement, settings:settings}" />
+				</f:if>
+				<f:if condition="{mediaElement.type} == 1">
+					<f:render partial="Detail/MediaVideo" arguments="{mediaElement: mediaElement, settings:settings}" />
+				</f:if>
+		</f:for>
+	</figure>
+</f:if>
+
+
+

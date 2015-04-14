@@ -1,0 +1,260 @@
+.image-detailview {
+    overflow: hidden;
+    position: relative;
+}
+
+.detail-left, .detail-right {
+    float: left;
+}
+
+.detail-left {
+    position: relative;
+}
+
+.detail-right {
+    width: 316px;
+    margin-left: 15px;
+}
+
+@media all and (max-width: 64em) {
+    .detail-right {
+        width: 305px;
+    }
+}
+
+.image-container {
+    height: auto;
+    width: 647px;
+    border: 1px solid #e1e3e6;
+}
+
+/* Zurücklink */
+.back-link {
+    font-size: 15px;
+    color: #333;
+    margin: 10px 0;
+    padding: 0 0 0 20px;
+    position: relative;
+    display: block;
+}
+
+.back-link:before {
+    content:"";
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent; 
+    border-right:5px solid black; 
+    position: absolute;
+    left: 5px;
+    top: 4px;
+}
+
+/* Rechte Spalte */
+.image-detailview h2 {
+    margin: 0 0 6px 0;
+    padding: 0;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 1.411764706;
+    color: #000;
+    text-transform: none;
+    font-family: BundesSerifWeb, Times, 'Times New Roman', serif;
+}
+
+.image-detailview .description {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5em;
+    margin-top: 8px;
+}
+
+/* Bild Paginierung */
+.image-detailview .gallery-pagination {
+    margin: 0 !important;
+    overflow: hidden;
+    position: absolute;
+    bottom: 30px;
+    left: 8px;
+    z-index: 9;
+}
+
+.image-detailview .tx-ptextlist-pager-item-display {
+    padding-top: 17px;
+    font-family: BundesSansWeb,Helvetica,Arial,Geneva,sans-serif;
+    color: #000;
+    font-size: 15px;
+}
+
+.small-gallery-pagination .tx-ptextlist-pager-item-display {
+    display: none;
+}
+
+/* Buttons */
+.download,
+.size {
+    float: right;
+    margin: 7px 0 0 34px;
+    font-size: 15px;
+}
+
+.download a,
+.size a {
+    height: 26px;
+    padding: 0 15px 0 0;
+    font-family: BundesSansWeb,Helvetica,Arial,Geneva,sans-serif;
+    line-height: 26px;
+    text-align: center;
+    color: #000;
+    text-indent: 0;
+    display: inline-block;
+    position: relative;
+    background-color: #c6e3a5;
+}
+
+.download a:before,
+.size a:before {
+    content: "\e605";
+    font-size: 48px;
+    width: 66px;
+    height: 26px;
+    margin-right: 15px;
+    background-color: #C4C8CD; 
+    border-right: 1px solid #fff;
+    speak: none;
+    display: inline-block;    
+    font-family: 'BLEMaster';
+    vertical-align: top;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}
+
+.size a:before {
+    content: "\e610";
+    font-size: 31px;
+    float: left;
+}
+
+.size.min a:before {
+    content: "\e61c";
+    font-size: 45px;
+}
+
+/* Bilderliste */
+.imagelist-detailview {
+    overflow: hidden;
+    margin: 34px 0 0 -15px;
+}
+
+.imagelist-detailview .tx-yag-item-thumb-outerframe {
+    width: 149px;
+    margin: 0 0 15px 15px;
+    height: auto;
+}
+
+.tx-yag-pi1 .theme-ble.imagelist-detailview .tx-yag-thumb-innerframe {
+    margin: 0;
+}
+
+.tx-yag-pi1 .theme-ble.imagelist-detailview .tx-yag-thumb-innerframe > div {
+    height: auto;
+    width: 149px;
+    height: 98px;
+    text-align: center;
+}
+
+.tx-yag-pi1 .theme-ble.imagelist-detailview .tx-yag-thumb-innerframe > div.active {
+    border-color: #000;
+}
+
+.tx-yag-pi1 .theme-ble.imagelist-detailview .tx-yag-thumb-innerframe > div.tx-yag-thumb-caption {
+    height: auto;
+    position: absolute;
+    left: -999em;
+}
+
+.tx-yag-pi1.theme-ble .image-detailview .tx_yag-single-description.description i {
+    font-style: normal;
+    font-size: 0.8em;
+    display: block;
+    margin-top: 5px;
+    line-height: 16px;
+}
+
+.imagelist-detailview .tx-yag-thumb-innerframe a {
+    padding-left: 0;
+}
+
+.gallery-pagination.small-gallery-pagination {
+    margin-left: 0;
+}
+
+.gallery-pagination.small-gallery-pagination .tx-ptextlist-pager, 
+.gallery-pagination.small-gallery-pagination .tx-ptextlist-pager-item-display {
+    float: left;
+    margin-right: 15px;
+}
+
+.small-gallery-pagination .tx-ptextlist-pager {
+    margin-right: 15px;
+}
+
+.small-gallery-pagination .tx-ptextlist-pager-item-display {
+    color: #000;
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+/* Bild Maximierung */
+.tx-yag-singleview {
+    text-align: left;
+    position: relative;
+}
+
+.tx-yag-singleview h2 {
+    padding: 0;
+    color: #000;
+    font-size: 17px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.tx-yag-singleview  .tx-yag-image a {
+    padding-left: 0;
+}
+
+.tx-yag-singleview .tx-yag-image {
+    max-width: 978px;
+    max-height: 800px;
+    border: 1px solid #e1e3e6;
+    overflow: hidden;
+}
+
+/* Bild Paginierung */
+.tx-yag-singleview .gallery-pagination {
+    margin-left: 0;
+    position: absolute;
+    bottom: -30px;
+    left: 7px;
+}
+
+.tx-yag-current {
+    text-align: left;
+    padding: 15px 3px 0 3px;
+    width: auto;
+}
+
+.tx-yag-navigator {
+    margin: 0;
+}
+
+.tx-yag-next,
+.tx-yag-previous {
+    width: 100%;
+    text-indent: 99999px;
+}

@@ -1,0 +1,251 @@
+/// ----------------------------------------------
+// PageTSconfig
+// ToDo: multi-lang support for labels/strings
+// ----------------------------------------------
+
+// ----------------------------------------------
+// mod - Options for backend modules
+// ----------------------------------------------
+
+// Increase number of records shown in LIST module
+mod.web_list.itemsLimitSingleTable = 1000
+mod.web_list.itemsLimitPerTable = 1000
+
+// Show content columns
+// also set TCEFORM.tt_content.colPos.removeItems accordingly
+// 0 = normal
+// 1 = left
+// 2 = right
+// 3 = border
+mod.SHARED {
+		colPos_list = 0,1,2
+}
+
+// ----------------------------------------------
+// RTE - configuration for the Rich Text Editor
+// moved to seperate file rteconfig.txt
+// ----------------------------------------------
+
+// ----------------------------------------------
+// TCMAIN - configuration for the TYPO3 Core Engine (TCEmain)
+// ----------------------------------------------
+
+// Define default owner and group for new pages
+
+TCEMAIN.permissions {
+	# Owner be_users UID for new pages: User "page_access"
+	# Owner be_groups UID for new pages: Group "default"
+	userid = 5
+	groupid = 4
+
+	# User can`t do anything (default):
+	# Group can do anything except "delete"
+	# Everybody can at least see the page
+	# (normally everybody can do nothing)
+	user = show, editcontent, edit, delete, new
+	group = show, editcontent, edit, delete, new
+	everybody = show
+}
+
+// ----------------------------------------------
+// TCEFORM 	Extra configuration for the form fields rendered by the TCEforms-class in general.
+// Remove elements that can`t be disabled via ACL
+// ----------------------------------------------
+
+TCEFORM.tt_content {
+	bodytext {
+		// click on title of field bodytext opens window with RTE
+		linkTitleToSelf = 1
+		// add link in RTE window that returns to normal edit window
+		linkTitleToSelf.returnUrl = 1
+	}
+
+	// remove non used content-columns in CE-view
+	// see mod.SHARED.colPos_list above
+	colPos.removeItems = 3
+
+	// remove subheader-field in selected content element types
+	subheader.types.text.disabled = 1
+	subheader.types.header.disabled = 1
+
+	// remove language selection as we only have no multi-lang portals by default
+	sys_language_uid.disabled = 0
+
+	// remove space before and after fields
+	spaceBefore.disabled = 1
+	spaceAfter.disabled = 1
+
+	// remove date field
+	date.disabled = 1
+
+	// remove layout field
+	layout.disabled = 1
+
+}
+
+// --------------------------------------------------------
+// TCEFORM - configure options for header
+// --------------------------------------------------------
+TCEFORM.tt_content {
+	header_layout.disabled = 0
+	header_position.disabled = 1
+	header_link.disabled = 1
+
+	// remove select-field for header-type in content element header
+	// also see configuration/rendering for fixed headline-type
+	header_layout.types.header.disabled = 0
+
+	header_layout.addItems  {
+		6 = H6
+		7 = H2 in a box
+		8 = H3 in a box
+		9 = H4 in a box
+		10 = H5 in a box
+		11 = H6 in a box
+ 	}
+
+	header_layout {
+		// remove unnecessary headline-types
+		removeItems = 0,1
+		// change labels for headline-types
+		# altLabels.1 = Überschrift 1 <h1>
+		altLabels.2 = Überschrift 2 <h2>
+		altLabels.3 = Überschrift 3 <h3>
+		altLabels.4 = Überschrift 4 <h4>
+		altLabels.5 = Überschrift 5 <h5>
+		altLabels.6 = Überschrift 6 <h6>
+		altLabels.7 = Überschrift 2 (Großbuchstaben) <h2 in a box>
+		altLabels.8 = Überschrift 3 (Großbuchstaben) <h3 in a box>
+		altLabels.9 = Überschrift 4 (Großbuchstaben) <h4 in a box>
+		altLabels.10 = Überschrift 5 (Großbuchstaben) <h5 in a box>
+		altLabels.11 = Überschrift 6 (Großbuchstaben) <h6 in a box>
+		altLabels.100 = unsichtbar
+	}
+
+}
+
+// --------------------------------------------------------
+// TCEFORM - classes for content elements (Frames)
+// --------------------------------------------------------
+
+// Define new custom frame entries
+// Remember: you only define what the editor can select in the backend here
+// to make it work, you`ll also have to define the frame objects in configuration/rendering
+// Example: tt_content.stWrap.innerWrap.cObject.1.value = <div class="xy"> | <div>
+
+TCEFORM.tt_content.section_frame {
+
+	// Remove pre-defined frames
+	removeItems= 1,5,6,10,11,12,20,21,66
+
+	// In case you just want to rename the frames
+	altLabels {
+		0 = Standard
+		#1 = example
+		#5
+		#6
+		#11
+		#12
+		#20
+		#21
+	}
+
+	// Add custom frame entries
+	//ToDo: find useful naming-convention
+	addItems {
+		#110 = Textbox mit grauem Hintergrund
+		115 = Menübox ohne Abstand nach oben
+		116 = Menübox mit Abstand nach oben
+		120 = Infobox
+		125 = Kontaktbox (Telefon)
+		130 = Box für Link-Listen
+		135 = Box für Download-Listen
+		140 = Flexbox
+		145 = Erfolgs-Box
+		150 = Nur-Bild-Box
+		#155 = Box ohne Überschrift
+		170 = Formular
+		180 = Nachrichten-Footerbox
+		200 = Inhalt breit
+
+
+		#210 = Teaser schmal
+	}
+}
+
+// --------------------------------------------------------
+// TCEFORM  - Define custom menu-types (sitemap etc.)
+// --------------------------------------------------------
+
+	// Add, remove or modify menu-types
+	// TS definition of custom menu-types: see configuration/rendering
+
+	// defaults:
+	// 0 = Menü dieser Seiten
+	// 1 = Menü der Unterseiten
+	// 4 = Menü der Unterseiten (mit Inhaltsangabe)
+	// 7 = Menü der Unterseiten (mit Seiteninhalt)
+	// 2 = Sitemap
+	// 3 = Abschnittsübersicht (mit Seiteninhalt)
+	// 5 = Geänderte Seiten
+	// 6 = Verwandte Seiten (nach Stichworten)
+
+TCEFORM.tt_content.menu_type {
+	// add comma-seperated list of menu-ids you`d like to remove
+	removeItems = 0, 1, 4, 7, 5, 6, 8, categorized_pages, categorized_content, masterconfig_pi1, 102
+
+	#altLabels.1 = Alternative name for existing menu type
+
+	addItems.101 = Artikelliste mit Bild, Inhalt und mehr-Link
+	#addItems.102 = Newsliste rechts
+	#addItems.104 = Custom menu 4
+
+	addItems.103 = Menü links
+	addItems.104 = Menü Broschüren
+}
+
+// --------------------------------------------------------
+// TCEFORM  - pages configuration
+// --------------------------------------------------------
+
+	// Remove page types
+	// 1 = Standard
+	// 3 = Link to external URL
+	// 4 = Shortcut
+	// 6 = Backend User Section
+	// 7 = Mount Point
+	// 199 = Visual menu seperator
+	// 254 = Sys folder
+	// 255 = Recycler
+	// --div-- = Divider
+
+TCEFORM.pages.doktype {
+   removeItems = --div--,6,7,199,255
+}
+
+TCEFORM {
+	pages {
+		backend_layout.removeItems= -1,0
+		backend_layout.altLabels.0 = Standardlayout
+		backend_layout_next_level.altLabels.0 = Standardlayout
+		backend_layout_next_level.removeItems= -1,0
+		backend_layout_next_level.disabled = 0
+		backend_layout.label.default = Seitentyp
+		backend_layout.label.de = Seitentyp
+		backend_layout_next_level.label.default = Page type Subsites
+		backend_layout_next_level.label.de = Seitentyp Unterseiten
+		layout.disabled = 1
+		content_from_pid.disabled = 1
+	}
+}
+
+#default archive date for tx_news records
+tx_news.predefine.archive = +1 month
+
+#Templates for tx_news
+tx_news.templateLayouts {
+	1 = News Teaser breit
+	2 = News Teaser breit ohne Bild
+	3 = Termine Teaser breit ohne Bild
+    4 = Terminarchiv ohne Monat
+}

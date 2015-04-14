@@ -1,0 +1,51 @@
+// ---------------------------------------------------
+// Insert content from headerbox
+// ---------------------------------------------------
+
+lib.headerboxRendering = COA
+lib.headerboxRendering {
+	10 = TEXT
+	10 {
+		value = {$portal.headerbox.defaultstageimage}
+		override.field = image
+		wrap = <section class="stage BG-darkAccent BG-stageKeyVisual" id="idStage" style="background-image: url(|)"><div class="center"><div class="promotion BG-darkAccent">
+		stdWrap.replacement {
+			10 {
+				search = ../../fileadmin
+				replace = /fileadmin
+			}
+		}
+	}
+	20 = TEXT
+	20	{
+		field = header
+		wrap = <h1>|</h1>
+		required = 1
+	}
+
+	30 = TEXT
+	30 {
+		field = bodytext
+		parseFunc =< lib.parseFunc_RTE
+		wrap = |</div></div></section>
+		required = 1
+	}
+}
+
+lib.headerboxContent < styles.content.getLeft
+lib.headerboxContent {
+	slide = -1
+	renderObj < lib.headerboxRendering
+}
+
+lib.headerbox = COA
+lib.headerbox {
+	10 < lib.headerboxContent
+
+	20 < styles.content.get
+	20 {
+		select.pidInList = {$portal.pid.headerbox}
+		renderObj < lib.headerboxRendering
+		if.isFalse.cObject < lib.headerboxContent
+	}
+}

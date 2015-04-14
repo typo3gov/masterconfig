@@ -1,0 +1,38 @@
+// ---------------------------------------------------
+// Basic configuration for directory-based navigations
+// ---------------------------------------------------
+lib.nav.meta = COA
+lib.nav.meta {
+	
+	20 = COA
+	20 {
+		stdWrap.wrap = <ul class="metaNav">|</ul>
+		20 = HMENU
+		20 {
+			special = directory
+			special.value = {$portal.pid.metanavigation}
+			1 = TMENU
+			1 {
+				NO = 1
+				ACT = 1
+				CUR = 1
+				noBlur = 1
+				expAll = 0
+				wrap = |
+				NO {
+					wrapItemAndSub = <li class="li-level1-no li-first">|</li> |*| <li class="li-level1-no">|</li> |*| <li class="li-level1-no li-last">|</li>
+				}
+				CUR < .NO
+				CUR {
+					doNotLinkIt = 1
+					linkWrap = <strong>|</strong>
+					wrapItemAndSub = <li class="li-level1-act">|</li>
+				}
+				ACT < .NO
+				ACT {
+					wrapItemAndSub = <li class="li-level1-act li-first">|</li> |*| <li class="li-level1-act">|</li> |*| <li class="li-level1-act li-last">|</li>
+				}
+			}
+		}
+	}
+}

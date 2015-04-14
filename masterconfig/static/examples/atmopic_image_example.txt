@@ -1,0 +1,23 @@
+// ---------------------------------------------------
+// Configuration for atmopic content element
+// Renders image/media object from media field of current page
+// ---------------------------------------------------
+lib.component.document.atmopic = COA
+lib.component.document.atmopic {
+	10 = IMAGE
+	10 {
+		file {
+			maxH = {$portal.component.atmopic.height}
+			maxW = {$portal.component.atmopic.width}
+			import.cObject = TEXT
+			import.cObject.dataWrap = {{$portal.component.atmopic.filename}}
+			import.cObject.override {
+				required = 1
+				data = levelmedia: -1 , slide
+				wrap = uploads/media/ |
+			}
+		}
+		stdWrap.typolink.parameter = {$portal.component.atmopic.linkPid}
+	}
+	stdWrap.wrap = <div id="atmopic">|</div>
+}

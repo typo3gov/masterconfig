@@ -1,0 +1,24 @@
+/ ----------------------------------------------
+/ User TSconfig (EDITORS)
+/ ----------------------------------------------
+
+/ ----------------------------------------------
+/ TCA
+/ ----------------------------------------------
+
+TCAdefaults.pages {
+	hidden=0
+	doktype=1
+}
+
+TCAdefaults.tt_content {
+	hidden = 0
+	header =
+	bodytext =
+}
+
+
+TCAdefaults.tt_news {
+	hidden=0
+}
+

@@ -1,0 +1,230 @@
+/*
+	Project:   Master Kampagne Version 2
+	Author:    Marc Haunschild
+	           Bundesanstalt für Landwirtschaft und Ernährung (BLE)
+	Copyright: Bundesministerium für Ernährung,
+	           Landwirtschaft und Verbraucherschutz (BMELV)
+
+
+
+- - - - - - - - - - - - - - - - - -
+
+
+-----------------------------------
+  1. Colors
+- - - - - - - - - - - - - - - - - -
+*/
+
+body.htmlarea-content-body {
+  background-color: #fff;
+  color: #000;
+}
+body.htmlarea-content-body li,
+body.htmlarea-content-body th,
+body.htmlarea-content-body td,
+body.htmlarea-content-body p {
+	color:#595959;
+}
+body.htmlarea-content-body a {
+	color:#c44f03;
+}
+
+/*  
+-----------------------------------
+  2. Resets and general rules
+- - - - - - - - - - - - - - - - - -
+*/
+
+html, body, li, div, input, img {
+  margin: 0;
+  padding:0;
+	border: 0;
+}
+#page {
+  font-size: 100%; /* font-size not set for <body>, so that min-width-expression still can be used for IE 6 */
+	font-family: Arial, Helvetica, "Lucida sans", Geneva, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+a:active,
+a:focus,
+a:hover {
+	text-decoration: underline;
+}
+
+/*  
+-----------------------------------
+  6. Article
+- - - - - - - - - - - - - - - - - -
+
+  6.1 General Styles  - - - - - - -
+*/
+
+
+h3 {
+	margin-top: 1.375em;
+	margin-bottom: .4375em;
+	font-size: 1em;
+	line-height: 1.625em;
+	font-weight:bold;
+	color:#4c4c4c;
+}
+h4 {
+	margin-top: 1.4615em;
+	margin-bottom: .3846em;
+	font-size: 1em;
+	line-height: 1.5385em;
+	font-weight:bold;
+	color:#191919;
+}
+li,
+p {
+	margin-bottom: .76923em;
+	font-size: 1em;
+	line-height: 1.5385em;
+	color:#595959;
+}
+*:first-child+html ol {
+	margin-left: 4px;
+}
+ul {
+	list-style-type: disc;
+	font-size: 1em;
+}
+
+ul.downloadList {
+	list-style-type: disc;	
+}
+
+ul.level1 {
+	list-style-type: disc;	
+}
+ul.level2 {
+	list-style-type: disc;	
+}
+ul.level3 {
+	list-style-type: disc;	
+}
+ul.level4 {
+	list-style-type: disc;	
+}
+
+ol.level1 {
+	list-style-type: disc;	
+}
+ol.level2 {
+	list-style-type: disc;	
+}
+ol.level3 {
+	list-style-type: disc;	
+}
+ol.level4 {
+	list-style-type: disc;	
+}
+
+ol.altCounter {
+	list-style-type: disc;	
+}			
+
+ul.clearfix {
+	list-style-type: disc;	
+}
+
+ul li {
+	margin: 0 0 0 15px;
+	padding: 0 0 0.3846em 5px;
+}
+ol li {
+	margin: 0 0 0 20px;
+	padding: 0 0 0.3846em 0;
+}
+li li,
+li h4,
+li p {
+	font-size: 100%;
+}
+li h3,
+li p {
+	margin-bottom: 0;
+}
+
+ol.level1,
+ul.level1,
+li.level1,
+ol.level2,
+ul.level2,
+li.level2,
+ol.level3,
+ul.level3,
+li.level3
+ol.level4,
+ul.level4,
+li.level4 {
+	font-size: 1em;
+}
+
+a {
+	padding-left: 13px;
+	text-decoration: none;
+	background-image:url("../img/internalLink.png");
+	background-repeat: no-repeat;
+	background-position: 3px 4px;
+}
+a.download {
+	background-image:url("../img/downloadLink.png");
+	background-position: 1px 4px;
+}
+a:active,
+a:focus,
+a:hover {
+	text-decoration: underline;
+}
+/* Some links in the article area must NOT have a link icon
+   Removing them... */
+h3 a,
+{
+	background-image: none;
+	padding-left: 0;
+}
+
+/* 6.8 Table Data  - - - - - - - */
+
+table {
+	width: 29.375em;
+	margin: .8125em 0;
+}
+table caption {
+	border-left: 2px solid #fff;
+	border-right: 2px solid #fff;
+	padding: 5px 10px;
+	font-size: 1em;
+	line-height: 1.53846em;
+	text-align: left;
+	font-weight: bold;
+	color:#fff;
+	background-color: #d5651c;
+}
+table th {
+	vertical-align: top;
+	padding: 5px 10px;
+	font-size: .6875em;
+	line-height: 1.53846em;
+	text-align: left;
+	color: #4c4c4c;
+	background-color: #faece3;
+}
+table td {
+	padding:5px 10px 5px 5px;
+	font-size: .6875em;
+	line-height: 1.36364em;
+	color:#333;
+	background-color: #ededed;
+}
+table th p,
+table td p {
+	font-size:1em;
+}
+table td a {
+	color: #c44f03;
+}

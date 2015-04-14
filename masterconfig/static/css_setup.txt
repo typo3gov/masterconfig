@@ -1,0 +1,55 @@
+// ---------------------------------------------------
+// Render code for inclusion of CSS framework
+// ---------------------------------------------------
+
+lib.selectedLayout = COA
+lib.selectedLayout {
+	10 = CASE
+	10 {
+		key.field = backend_layout
+		key.ifEmpty.data = levelfield:-2, backend_layout_next_level, slide
+		2 = TEXT
+		2.value = mainTwoColumns
+		default = TEXT
+		default.value =
+	}
+}
+
+lib.css = COA
+lib.css {
+	10 = COA
+	10 {
+		10 = COA
+		10 {
+			10 = TEXT
+			10.value (
+				<link rel="stylesheet" href="typo3conf/ext/masterconfig/res/css/normalize.min.css">
+				<link rel="stylesheet" href="typo3conf/ext/masterconfig/res/css/main.css">
+				)
+		}
+	}
+
+	80 = COA
+	80 {
+		10 < lib.selectedLayout
+		stdWrap {
+			wrap = <link rel="stylesheet" type="text/css" href="/typo3conf/ext/masterconfig/res/css/|.css" />
+			if {
+				isTrue.cObject < lib.selectedLayout
+			}
+		}
+	}
+	90 = COA
+	90 {
+		10 = TEXT
+		10 {
+			value = {$portal.templates.css.alternateLayout.filename}
+			wrap = <link rel="stylesheet" type="text/css" href="|" />
+			if {
+				value = {$portal.templates.css.alternateLayout.enable}
+				equals = 1
+			}
+		}
+	}
+
+}

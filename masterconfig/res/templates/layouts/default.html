@@ -1,0 +1,33 @@
+<f:comment>
+This file creates a layout by defining which sections and partials should be rendered. Sections have to be defined in the fluid-file that uses/calls this layout.
+Partials are sections which can be used multiple times and therefore have been moved to seperate files in the partials subfolder.
+<f:render partial="logo" />
+</f:comment>
+	<!--[if lt IE 7]>
+	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<![endif]-->
+	<section class="metaNavContainer center">
+		<f:cObject typoscriptObjectPath="lib.nav.meta" />
+		<f:cObject typoscriptObjectPath="lib.nav.lang" />
+		<f:cObject typoscriptObjectPath="lib.searchbox" />
+	</section>
+	<header class="banner center">
+		<f:cObject typoscriptObjectPath="lib.logo" />
+		<div class="mainNavButton menu-button">Menu</div>
+		<nav>
+			<f:cObject typoscriptObjectPath="lib.nav.level" />
+		</nav>
+	</header>
+	<section id="idStage" class="stage BG-darkAccent BG-stageKeyVisual">
+		<div class="center">
+			<div class="BG-darkAccent">
+				<f:cObject typoscriptObjectPath="lib.headline" />
+			</div>
+		</div>
+	</section>
+	<f:cObject typoscriptObjectPath="lib.nav.breadcrumb" />
+	<main id="idMainContent">
+		<f:render section="body" />
+	</main>
+	<f:cObject typoscriptObjectPath="lib.nav.footer" />
+	<f:cObject typoscriptObjectPath="lib.scripts_bottom" />

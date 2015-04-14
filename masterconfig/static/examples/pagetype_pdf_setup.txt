@@ -1,0 +1,26 @@
+document_type_pdf = PAGE
+document_type_pdf {
+	typeNum = 123
+	config.pageGenScript = EXT:pdf_generator/gen_pdf.php
+	config.admPanel = 0
+	config.xhtml_cleaning = 0
+	config.USERNAME_substToken =
+	config.ftu = 0
+	config.disableCharsetHeader = 1
+	config.prefixLocalAnchors = 0
+	50 >
+	50 = TEMPLATE
+	50 {
+		template = FILE
+		template.file = {$portal.templates.directory.htmlMaster}main/pdf.html
+
+		workOnSubpart = DOCUMENT
+
+		subparts.TITLE = TEXT
+		subparts.TITLE {
+			field = title
+			wrap = <h1>|</h1>
+		}
+		subparts.CONTENT = < page.10.subparts.PORTAL-BLOCK-CONTENT.subparts.PORTAL-SLOT-CONTENT-COLUMN0
+	}
+}

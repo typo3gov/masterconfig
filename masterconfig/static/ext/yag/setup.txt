@@ -1,0 +1,116 @@
+# BLE Bildergalerie
+# Include CSS for this theme
+page.includeCSS.yag_theme_ble = EXT:masterconfig/Resources/Public/yag-ble/Css/style.css
+
+# Copy default settings from default theme
+plugin.tx_yag.settings.themes.ble < plugin.tx_yag.settings.themes.default
+
+plugin.tx_yag.settings.themes.ble {
+    controller {
+        ItemList {
+            list.template = EXT:masterconfig/Resources/Private/yag-ble/Templates/ItemList/List.html
+        }
+        Item {
+            show.template = EXT:masterconfig/Resources/Private/yag-ble/Templates/Item/Show.html
+        }
+    }
+    itemList {
+        imageThumbPartial = EXT:masterconfig/Resources/Private/yag-ble/Partials/ImageThumb.html
+        pagerPartial = EXT:masterconfig/Resources/Private/yag-ble/Partials/Pager/Default.html
+    }
+    item {
+        itemsPerPage = 20
+        imageThumbPartial = EXT:masterconfig/Resources/Private/yag-ble/Partials/ItemImageThumb.html
+        pagerPartial = EXT:masterconfig/Resources/Private/yag-ble/Partials/Pager/SingleItem.html
+    }
+    resolutionConfigs {
+        thumb {
+            maxW = 149
+            maxH = 98
+        }
+        single {
+            width = 647
+            #height =
+        }
+        lightbox >
+        lightbox {
+            maxW = 978
+            maxH = 800
+        }
+    }
+    includeJS.slick  = EXT:masterconfig/Resources/Public/slick-1.3.11/slick/slick.min.js
+    includeJS.slick-init  = EXT:masterconfig/Resources/Public/yag-ble/slick-init.js
+    includeCSS.slick = EXT:masterconfig/Resources/Public/slick-1.3.11/slick/slick.css
+}
+
+# BLE Bildergalerie Teaser breit
+# Include CSS for this theme
+page.includeCSS.yag_theme_ble-teaser-breit = EXT:masterconfig/Resources/Public/yag-ble-teaser-breit/Css/style.css
+
+# Copy default settings from default theme
+plugin.tx_yag.settings.themes.ble-teaser-breit < plugin.tx_yag.settings.themes.default
+
+plugin.tx_yag.settings.themes.ble-teaser-breit {
+    itemList.itemsPerPage = 999
+    controller {
+        ItemList {
+            list.template = EXT:masterconfig/Resources/Private/yag-ble-teaser-breit/Templates/ItemList/List.html
+        }
+    }
+    itemList {
+        imageThumbPartial = EXT:masterconfig/Resources/Private/yag-ble-teaser-breit/Partials/ImageThumb.html
+        pagerPartial = EXT:masterconfig/Resources/Private/yag-ble-teaser-breit/Partials/Pager/Default.html
+    }
+    item {
+        pagerPartial = EXT:masterconfig/Resources/Private/yag-ble-teaser-breit/Partials/Pager/SingleItem.html
+    }
+    resolutionConfigs {
+        thumb >
+        thumb {
+            width = 174
+            height = 115c
+        }
+        lightbox >
+        lightbox {
+            maxW = 978
+            maxH = 800
+        }
+    }
+    includeJS.slick  = EXT:masterconfig/Resources/Public/slick-1.3.11/slick/slick.min.js
+    includeJS.slick-init  = EXT:masterconfig/Resources/Public/yag-ble-teaser-breit/slick-init.js
+    includeCSS.slick = EXT:masterconfig/Resources/Public/slick-1.3.11/slick/slick.css
+}
+
+# BLE Bildergalerie Teaser schmal
+# Include CSS for this theme
+page.includeCSS.yag_theme_ble-teaser-schmal = EXT:masterconfig/Resources/Public/yag-ble-teaser-schmal/Css/style.css
+
+# Copy default settings from default theme
+plugin.tx_yag.settings.themes.ble-teaser-schmal < plugin.tx_yag.settings.themes.default
+
+plugin.tx_yag.settings.themes.ble-teaser-schmal {
+    controller {
+        ItemList {
+            list.template = EXT:masterconfig/Resources/Private/yag-ble-teaser-schmal/Templates/ItemList/List.html
+        }
+    }
+    itemList {
+        imageThumbPartial = EXT:masterconfig/Resources/Private/yag-ble-teaser-schmal/Partials/ImageThumb.html
+        pagerPartial = EXT:masterconfig/Resources/Private/yag-ble-teaser-schmal/Partials/Pager/Default.html
+    }
+    item {
+        pagerPartial = EXT:masterconfig/Resources/Private/yag-ble-teaser-schmal/Partials/Pager/SingleItem.html
+    }
+    resolutionConfigs {
+        thumb >
+        thumb {
+            width = 315
+            height = 209
+        }
+        lightbox >
+        lightbox {
+            maxW = 978
+            maxH = 800
+        }
+    }
+}

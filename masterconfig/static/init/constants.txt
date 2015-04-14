@@ -1,0 +1,105 @@
+// ---------------------------------------------------
+// The following constants define path names, file locations and other basic settings for this site
+// ToDo: Comments for constants editor, enable/disable switches for all components,
+// multilang. support, improve and expand structure
+// ---------------------------------------------------
+portal {
+
+	configuration {
+		enableRealURL = 1
+		admPanel = 0
+		etracker {
+			code = 0
+			klicktracker = 0
+		}
+		extensions {
+
+		}
+	}
+
+	atmopic {
+		filename = fileadmin/SITE_MASTER/content/bilder/kopfgrafiken/imagebildFolge.jpg
+		enable = 1
+	}
+	logo {
+		filename = fileadmin/SITE_MASTER/content/bilder/logo/bleLogo.png
+		altText = Bundesanstalt für Landwirtschaft und Ernährung
+		logoLink = /
+		logoLinkTitle = zurück zur Startseite
+		enable = 1
+	}
+	favicon {
+		filename = /favicon.ico
+		enable = 1
+	}
+	searchbox {
+		enable = 1
+	}
+	headerbox {
+		defaultstageimage = /fileadmin/SITE_MASTER/content/bilder/Buehnenbild/Buehnenbild.png
+	}
+	navigation.footer {
+		enable = 1
+	}
+	navigation.meta {
+		enable = 1
+	}
+
+	general {
+		name = Example portal based on local-configuration
+		title = BLE Master
+		subtitle = Untertitel Zeile 1
+		titlePostfix = BLE-Site-Vorlage
+		url = http://ble-master.dev.zadi.de/
+	}
+
+	meta {
+		description = Text for the description meta-tag. Not really important any more. Might be displayed in google search results
+		author = Author of portal / document
+	}
+
+	templates {
+		directory {
+			html = EXT:masterconfig/res/templates/
+			img = EXT:masterconfig/res/img/
+		}
+		# CSS setup: masterconfig/static/css_setup.txt
+		css{ 
+			// Alternatives Layout
+			alternateLayout.filename = /typo3conf/ext/masterconfig/res/css/bmelTheme.css
+			alternateLayout.enable = 0
+		}
+		// Configure and enable feed link rel tags in document header
+		feed1 {
+			name = /?type=100
+			title = Aktuelle Nachrichten
+			enable = 1
+		}
+	}
+
+	// Define entry points and page UIDs for navigation-elements, special pages etc.
+	pid {
+		root = 2
+		headerbox = 420
+        logos = 673
+		metanavigation = 133
+		servicenavigation = 414
+		footernavigation = 296
+		footernavigation2 = 856
+		functionsnavigation =
+		imprint =
+		nagivation-exclude = 75
+		search = 75
+		contact = 55
+		user-accounts =
+		accessibility = 76
+		contentGlobal = 196
+		contentSection = 199
+	}
+}
+
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/conf_rendering_constants.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/conf_lang_constants.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/ext/powermail/constants.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/ext/tx_news/constants.txt">

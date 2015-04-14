@@ -1,0 +1,103 @@
+// ---------------------------------------------------
+// Basic configuration for level-based navigations
+// ---------------------------------------------------
+lib.nav.level = COA
+lib.nav.level {
+	wrap =
+	10 = HMENU
+	10 {
+		excludeUidList = {$portal.pid.nagivation-exclude}
+		entryLevel = 0
+    		
+		1 = TMENU
+		1 {
+			NO = 1
+			ACT = 1
+			CUR = 1
+			noBlur = 1
+			expAll = 1
+			wrap = <ul id="idMainNav" class="mainNav flexnav" data-breakpoint="1024">|</ul>
+			NO {
+				before.stdWrap.cObject = COA_INT
+				before.stdWrap.cObject {
+					20 = TEXT
+					20 {
+						data = levelfield: -1,tx_masterconfig_css_class,slide
+						field = tx_masterconfig_css_class
+						noTrimWrap = | |">|
+					}
+				}
+				wrapItemAndSub = <li class="navLevel1 news |</li> |*| <li class="navLevel1|</li>
+				ATagTitle.field = subtitle
+			}
+			ACT < .NO
+			ACT {
+				wrapItemAndSub = <li class="navLevel1 news |</li> |*| <li class="navLevel1|</li>
+				ATagParams = class="on"
+			}
+			CUR < .ACT
+			CUR {
+				doNotLinkIt = 1
+				before.stdWrap.cObject {
+					20 {
+						noTrimWrap = | |"><strong><a name="selectedItem">|
+					}
+				}
+				linkWrap = |</a></strong>
+				wrapItemAndSub = <li class="navLevel1 news |</li> |*| <li class="navLevel1|</li>
+			}
+			IFSUB=1
+		    IFSUB{
+		      wrapItemAndSub = <li class="navLevel1 item-with-ul">|</li>
+		    }
+		}
+		2 < .1
+		2 {
+			wrap = <ul class="navLevel2 clearfix">|</ul>
+			NO.wrapItemAndSub = <li class="navLevel2 qualification|</li> |*| <li class="navLevel2 examPreparation|</li> |*| <li class="navLevel2 technicalCollegeDirectory|</li>
+			ACT.wrapItemAndSub = <li class="navLevel2 qualification|</li> |*| <li class="navLevel2 examPreparation|</li> |*| <li class="navLevel2 technicalCollegeDirectory|</li>
+			CUR.wrapItemAndSub = <li class="navLevel2 qualification|</li> |*| <li class="navLevel2 examPreparation|</li> |*| <li class="navLevel2 technicalCollegeDirectory|</li>
+			linkWrap = |</strong>
+			IFSUB=1
+		    IFSUB{
+		      wrapItemAndSub = <li class="navLevel2 item-with-ul">|</li>
+		    }
+		}
+		3 < .2
+		3 {
+			wrap = <ul class="navLevel3">|</ul>
+			NO.wrapItemAndSub = <li class="navLevel3|</li>
+			ACT.wrapItemAndSub = <li class="navLevel3|</li>
+			CUR.wrapItemAndSub = <li class="navLevel3|</li>
+			linkWrap = |</strong>
+			IFSUB >
+			#IFSUB=1
+		    #IFSUB{
+		    #  wrapItemAndSub = <li class="navLevel3 item-with-ul">|</li>
+		    #}
+		}
+		3 >
+		/* ### wird zur Zeit nicht benoetigt ####
+		4 < .3
+		4 {
+			wrap = <ul class="navLevel4">|</ul>
+			NO.wrapItemAndSub = <li class="navLevel4|</li>
+			ACT.wrapItemAndSub = <li class="navLevel4|</li>
+			CUR.wrapItemAndSub = <li class="navLevel4|</li>
+			linkWrap = |</strong>
+			IFSUB=1
+		    IFSUB{
+		      wrapItemAndSub = <li class="navLevel4 item-with-ul">|</li>
+		    }
+		}
+		5 < .4
+		5 {
+			wrap = <ul class="navLevel5">|</ul>
+			NO.wrapItemAndSub = <li class="navLevel5|</li>
+			ACT.wrapItemAndSub = <li class="navLevel5|</li>
+			CUR.wrapItemAndSub = <li class="navLevel5|</li>
+			linkWrap = |</strong>
+		}
+		*/
+	}
+}

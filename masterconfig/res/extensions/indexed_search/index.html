@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>indexed_search template</title>
+</head>
+
+<body>
+
+<h1>Indexed Search: Default template</h1>
+
+
+
+
+
+<p>--------------------------------------------------------</p>
+<h2>---TEMPLATE_SEARCH_FORM---</h2>
+<p>Template for displaying the search form.</p>
+<p>--------------------------------------------------------</p>
+
+<!-- ###SEARCH_FORM### begin -->
+<div class="tx-indexedsearch-searchbox embedding-floats"> 
+
+<form action="###ACTION_URL###" method="post" name="tx_indexedsearch" id="tx_indexedsearch">
+
+
+	<input type="hidden" name="tx_indexedsearch[_sections]" value="0" />
+	<input type="hidden" name="tx_indexedsearch[_freeIndexUid]" value="_" />
+	<input type="hidden" name="tx_indexedsearch[pointer]" value="0" />
+	<!-- ###HIDDEN_FIELDS### begin -->
+	<input type="hidden" name="###HIDDEN_FIELDNAME###" value="###HIDDEN_VALUE###" />
+	<!-- ###HIDDEN_FIELDS### end -->
+    
+    
+    <fieldset id="is-SearchBoxArea">
+    <p class="r">
+        <label for="tx-indexedsearch-searchbox"> ###FORM_SEARCHFOR###</label>
+        <input type="text" id="tx-indexedsearch-searchbox" name="tx_indexedsearch[sword]" value="###SWORD_VALUE###" class="tx-indexedsearch-searchbox-sword sword" />
+    
+    	<span class="searchSubmit">
+    		<label for="is-SubmitTop" class="outOfViewport">Suchbutton</label>
+        	<input type="submit" id="is-SubmitTop" name="tx_indexedsearch[submit_button]" value="###FORM_SUBMIT###" class="tx-indexedsearch-searchbox-button submit" />
+        </span>
+    </p>
+    <p class="is-linkToOtherMode">###LINKTOOTHERMODE###</p>
+    </fieldset>
+    
+    
+    
+    
+    <!-- ###ADDITONAL_KEYWORD### begin -->
+    <div class="r">
+        <input type="hidden" name="tx_indexedsearch[sword_prev]" value="###SWORD_PREV_VALUE###" />
+        <input type="checkbox" name="tx_indexedsearch[sword_prev_include]" id="tx_indexedsearch_sword_prev_include" value="1"   ###SWORD_PREV_INCLUDE_CHECKED### /> 
+        <label for="tx_indexedsearch_sword_prev_include">###ADD_TO_CURRENT_SEARCH###</label>.
+     </div>
+    <!-- ###ADDITONAL_KEYWORD### end -->
+
+
+
+    <fieldset class="extendedSearchFormArea">
+    <!-- ###SEARCH_FORM_EXTENDED### begin -->
+
+        <!-- ###SELECT_SEARCH_FOR### begin -->
+        
+        <div>
+            <label for="tx-indexedsearch-selectbox-type">###FORM_MATCH###</label>
+          		<!-- ###SELECT_SEARCH_TYPE### begin -->
+                <div>
+                <select  id="tx-indexedsearch-selectbox-type" name="tx_indexedsearch[type]" class="tx-indexedsearch-selectbox-type type">###SELECTBOX_TYPE_VALUES### </select>
+                </div>
+                <!-- ###SELECT_SEARCH_TYPE### end --> 
+                
+                
+                <!-- ###SELECT_SEARCH_DEFOP### begin -->
+                <div>
+                <select id="tx-indexedsearch-selectbox-defop" name="tx_indexedsearch[defOp]" class="tx-indexedsearch-selectbox-defop defop">###SELECTBOX_DEFOP_VALUES### </select>
+                </div>
+                <!-- ###SELECT_SEARCH_DEFOP### end --> 
+		</div>
+        <!-- ###SELECT_SEARCH_FOR### end -->
+
+
+
+        <!-- ###SELECT_SEARCH_IN### begin -->
+        <div>
+        	<div>
+            <label for="tx-indexedsearch-selectbox-media">###FORM_SEARCHIN###</label>
+                <!-- ###SELECT_SEARCH_MEDIA### begin -->
+                <select id="tx-indexedsearch-selectbox-media" name="tx_indexedsearch[media]" class="tx-indexedsearch-selectbox-media media">###SELECTBOX_MEDIA_VALUES### </select>
+                <!-- ###SELECT_SEARCH_MEDIA### end -->
+            </div>   
+            <div>    
+			<label for="tx-indexedsearch-selectbox-lang">-Sprache-</label>
+                <!-- ###SELECT_SEARCH_LANG### begin -->
+                <select id="tx-indexedsearch-selectbox-lang" name="tx_indexedsearch[lang]" class="tx-indexedsearch-selectbox-lang lang">###SELECTBOX_LANG_VALUES### </select>
+                <!-- ###SELECT_SEARCH_LANG### end -->
+             </div>
+             
+             
+        </div>
+        <!-- ###SELECT_SEARCH_IN### end -->
+
+
+
+        <!-- ###SELECT_SECTION### begin -->
+        <div>
+            <label for="tx-indexedsearch-selectbox-sections">###FORM_FROMSECTION###</label>
+            <select id="tx-indexedsearch-selectbox-sections" name="tx_indexedsearch[sections]" class="tx-indexedsearch-selectbox-sections sections">###SELECTBOX_SECTIONS_VALUES### </select>
+        </div>
+        <!-- ###SELECT_SECTION### end -->
+
+
+
+        <!-- ###SELECT_FREEINDEXUID### begin -->
+        <div>
+        <label for="tx-indexedsearch-selectbox-freeIndexUid">###FORM_FREEINDEXUID###
+            </label>
+                <select id="tx-indexedsearch-selectbox-freeIndexUid" name="tx_indexedsearch[freeIndexUid]" class="tx-indexedsearch-selectbox-freeIndexUid freeIndexUid">###SELECTBOX_FREEINDEXUIDS_VALUES### </select> 
+         </div>
+        <!-- ###SELECT_FREEINDEXUID### end -->
+
+
+
+
+        <!-- ###SELECT_ORDER### begin -->
+        <div>
+        	<div>
+            <label for="tx-indexedsearch-selectbox-order">###FORM_ORDERBY### </label>
+                <select id="tx-indexedsearch-selectbox-order" name="tx_indexedsearch[order]" class="tx-indexedsearch-selectbox-order order">###SELECTBOX_ORDER_VALUES### </select>&nbsp;
+            </div>
+            <div>   
+            <label for="tx-indexedsearch-selectbox-order">###FORM_ORDERBY### </label>
+                <select id="tx-indexedsearch-selectbox-desc" name="tx_indexedsearch[desc]" class="tx-indexedsearch-selectbox-desc desc">###SELECTBOX_DESC_VALUES### </select>
+            </div>
+         </div>
+        <!-- ###SELECT_ORDER### end -->
+
+
+
+
+        <!-- ###SELECT_RESULTS### begin -->
+        <div>
+            <label for="tx-indexedsearch-selectbox-results">###FORM_ATATIME### </label> 
+            <select id="tx-indexedsearch-selectbox-results" name="tx_indexedsearch[results]" class="tx-indexedsearch-selectbox-results results">###SELECTBOX_RESULTS_VALUES### </select>
+        </div>
+        <!-- ###SELECT_RESULTS### end -->
+        
+
+        <!-- ###SELECT_GROUP### begin -->
+        <div>
+
+            <label for="tx-indexedsearch-selectbox-group">###FORM_STYLE### </label>
+            <select id="tx-indexedsearch-selectbox-group" name="tx_indexedsearch[group]" class="tx-indexedsearch-selectbox-group group">###SELECTBOX_GROUP_VALUES### </select>&nbsp;&nbsp;
+
+                <!-- ###SELECT_EXTRESUME### begin -->
+                <br />
+                <input type="hidden" name="tx_indexedsearch[extResume]" value="0" />
+                <div>
+                <label for="tx_indexedsearch_extResume">###FORM_EXTRESUME###</label>
+                <input type="checkbox" id="tx_indexedsearch_extResume"  value="0" name="tx_indexedsearch[extResume]"    ###EXT_RESUME_CHECKED### /> 
+                </div>
+                <!-- ###SELECT_EXTRESUME### end -->
+         </div>
+        <!-- ###SELECT_GROUP### end -->
+
+		<!-- ###SEARCH_FORM_EXTENDED### end -->
+        </fieldset>
+        
+        
+	
+</form>
+</div>
+<!-- ###SEARCH_FORM### end -->
+<br /><br />
+
+
+
+
+
+
+<p>--------------------------------------------------------</p>
+<h2>---TEMPLATE_RULES---</h2>
+<p>Template for displaying the search rules.</p>
+<p>--------------------------------------------------------</p>
+
+<!-- ###RULES### begin -->
+	<div class="tx-indexedsearch-rules">
+		<h3>###RULES_HEADER###</h3>
+		<p>###RULES_TEXT###</p>
+	</div>
+<!-- ###RULES### end -->
+
+
+
+
+
+
+
+
+<p>--------------------------------------------------------</p>
+<h2>---TEMPLATE_RESULT_SECTION_LINKS---</h2>
+<p>Template for the section links in section mode.</p>
+<p>--------------------------------------------------------</p>
+
+<!-- ###RESULT_SECTION_LINKS### begin -->
+	<div class="tx-indexedsearch-sec"> 
+		<div class="resultLinks"> 
+			###LINKS### 
+  		</div>
+	</div>
+<!-- ###RESULT_SECTION_LINKS### end -->
+
+<!-- ###RESULT_SECTION_LINKS_LINK### begin -->
+			<div class="r">
+				<div>--&gt; ###LINK###</div>
+			</div>
+<!-- ###RESULT_SECTION_LINKS_LINK### end -->
+
+
+
+
+<p>--------------------------------------------------------</p>
+<h2>TEMPLATE_SECTION_HEADER</h2>
+<p><em>Template for the section title in section mode.</em></p>
+<p>--------------------------------------------------------</p>
+<!-- ###SECTION_HEADER### begin -->
+	<div class="tx-indexedsearch-secHead"><a name="###ANCHOR_URL###"></a>
+		<div class="sectionHeader">
+				<p class="tx-indexedsearch-title title" >###SECTION_TITLE###: <span class="tx-indexedsearch-result-count result-count" >###RESULT_COUNT### ###RESULT_NAME###</span></p>
+		</div>
+	</div>
+<!-- ###SECTION_HEADER### end -->
+
+
+
+
+
+
+
+<p>--------------------------------------------------------</p>
+<h2>TEMPLATE_RESULT_OUTPUT</h2>
+<p><em>Template for the search result list.</em></p>
+<p>--------------------------------------------------------</p>
+
+<!-- ###RESULT_OUTPUT### begin -->
+	<div class="tx-indexedsearch-res"> 
+		<table cellpadding="0" cellspacing="0" summary="Ergebnistabelle">
+			<!-- ###HEADER_ROW### begin -->
+            <thead>
+			<tr class="header_row">
+				<td class="tx-indexedsearch-icon icon" nowrap="nowrap">###ICON###</td>
+				<td class="tx-indexedsearch-result-number result-number" nowrap="nowrap">###RESULT_NUMBER###</td>
+				<td class="tx-indexedsearch-title title" width="100%">###TITLE###</td>
+				<td class="tx-indexedsearch-percent percent" nowrap="nowrap">###RATING###</td>
+			</tr>
+            </thead>
+			<!-- ###HEADER_ROW### end -->
+
+
+
+
+			<!-- ###ROW_LONG### begin -->
+			<tr class="r result_long">
+				<td class="c">&nbsp;</td>
+				<td class="tx-indexedsearch-descr descr"  colspan="3">###DESCRIPTION###</td>
+			</tr>
+            
+			<tr class="r">
+				<td class="c">&nbsp;</td>
+				<td class="tx-indexedsearch-info info"  colspan="3">###TEXT_ITEM_SIZE### ###SIZE### - ###TEXT_ITEM_CRDATE### ###CREATED### - ###TEXT_ITEM_MTIME### ###MODIFIED###<br />
+					###TEXT_ITEM_PATH### <span class="tx-indexedsearch-path path">###PATH###</span></td>
+			</tr>
+			<!-- ###ROW_LONG### end -->
+
+
+
+
+			<!-- ###ROW_SHORT### begin -->
+			<tr class="r result_short">
+				<td class="c">&nbsp;</td>
+				<td class="tx-indexedsearch-descr descr" colspan="3">###DESCRIPTION###</td>
+			</tr>
+			<!-- ###ROW_SHORT### end -->
+
+
+
+			<!-- ###ROW_SUB### begin -->
+			<tr class="r">
+				<td class="c">&nbsp;</td>
+				<td class="tx-indexedsearch-list list"  colspan="3"><br />###TEXT_ROW_SUB###<br /><br /></td>
+			</tr>
+			<!-- ###ROW_SUB### end -->
+		</table>
+	</div>
+<!-- ###RESULT_OUTPUT### end -->
+
+
+
+
+</body>
+</html>

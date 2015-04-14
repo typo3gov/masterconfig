@@ -1,0 +1,16 @@
+lib.skiplinks = COA
+lib.skiplinks {
+
+	#10 reserved for prepended stuff
+	20 = COA
+	20 {
+		10 = TEXT
+		10 {
+			value (
+				<a href="#idMainNav" class="visuallyhidden focusable">{$portal.langlabels.mainnav}</a>
+				<a href="#idStage" class="visuallyhidden focusable">{$portal.langlabels.jumptotopics}</a>
+				<a href="#idMainContent" class="visuallyhidden focusable">{$portal.langlabels.jumptocontent}</a>
+			)
+		}
+	}
+}

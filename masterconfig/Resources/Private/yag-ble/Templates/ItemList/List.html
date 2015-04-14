@@ -1,0 +1,127 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+{namespace ptx=Tx_PtExtbase_ViewHelpers}
+{namespace mc=Tx_Masterconfig_ViewHelpers}
+
+<extlist:comment>
+    <!--
+    Template for rendering an album.
+
+    Here is a list of objects / variables that can be accessed in this template:
+
+    Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+
+    @package YAG
+    @author Daniel Lienert <daniel@lienert.cc>
+    @author Michael Knoll <mimi@kaktusteam.de>
+    -->
+</extlist:comment>
+
+
+<f:layout name="Default" />
+
+<yag:Javascript.Include library="Slick"/>
+
+<f:section name="head">
+    <f:if condition="{config.settings.feed.active}">
+        <ptx:Head.link rel="alternate" type="application/rss+xml" title="{config.settings.feed.title}" href="{yag:uri.current(format:'rss')}" />
+    </f:if>
+</f:section>
+
+<f:section name="main">
+
+    <f:if condition="{mc:session(varname:'backPid')}">
+        <f:link.page pageUid="{mc:session(varname:'backPid')}" class="back-link">Zurück zum Beitrag</f:link.page>
+    </f:if>
+
+    <div class="image-detailview">
+
+        <div class="gallery-pagination">
+            <f:if condition='{config.settings.item.showPager}'>
+                <ul class="pagination image-detail">
+                </ul>
+                <div class="tx-yag-navigator tx-yag-current">
+                    Bild <span id="slick-current">1</span> von <span id="slick-total">1</span>
+                </div>
+            </f:if>
+        </div>
+
+        <div class="tx-yag image-slider">
+            <f:for each="{listData}" key="rowIndex" as="listRow" iteration="rowIterator">
+                <!-- big image slide -->
+                <div class="tx-yag image-slide image-{listRow.image.value.uid}">
+                    <div class="detail-left">
+                        <div class="tx-yag-image image-container">
+                            <yag:image item="{listRow.image.value}" resolutionName="single" />
+                        </div>
+                        <div class="size">
+                            <extlist:link.action action="show" controller="Item" arguments="{itemListOffset: listRow.specialValues.absoluteRowIndex}">Maximieren</extlist:link.action>
+                        </div>
+                        <f:if condition='{config.settings.item.showOriginalDownloadLink}'>
+                            <div class="tx-yag-single-download download">
+                                <f:link.action controller="Item" action="download" arguments="{item: listRow.image.value, fileHash: '{listRow.image.value.fileHash->f:format.crop(maxCharacters: 4, append: \'\')}'}">Download | <f:format.bytes>{listRow.image.value.filesize}</f:format.bytes></f:link.action>
+                            </div>
+                        </f:if>
+                    </div>
+                    <div class="detail-right">
+                        <f:if condition='{config.settings.item.showTitle}'>
+                            <div class="tx_yag-single-title">
+                                <h2 >{listRow.image.value.title}</h2>
+                            </div>
+                        </f:if>
+                        <f:if condition='{config.settings.item.showDescription}'>
+                            <div class="tx_yag-single-description description">
+                                {listRow.image.value.description}
+                                <f:if condition="{listRow.image.value.itemMeta.copyright}">
+                                    <i>{listRow.image.value.itemMeta.copyright}</i>
+                                </f:if>
+                            </div>
+                        </f:if>
+                    </div>
+                </div>
+                <!-- big image slide -->
+            </f:for>
+        </div>
+    </div>
+
+    <div class="tx-yag-items theme-ble imagelist-detailview">
+        <f:for each="{listData}" key="rowIndex" as="listRow">
+            <div class="tx-yag-thumb-outerframe tx-yag-item-thumb-outerframe theme-ble">
+                <f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: listRow.image.value, rowIndex: listRow.specialValues.absoluteRowIndex, pager: pager, pagerCollection:pagerCollection}" />
+            </div>
+        </f:for>
+    </div>
+
+    <f:if condition="{config.settings.itemList.showPager}">
+        <div class="tx-yag-pager theme-ble gallery-pagination small-gallery-pagination">
+            <f:render partial="{config.itemListConfig.pagerPartial}" arguments="{action: listAction, controller: 'ItemList', pager: pager, pagerCollection: pagerCollection, itemsText: '{f:translate(key:\'tx_yag_domain_model_album.items\')}'}" />
+        </div>
+    </f:if>
+
+    <div style="clear:both;">&nbsp;</div>
+
+    <!--f:if condition="{config.settings.itemList.zipDownload.active}">
+        <f:if condition="{listData->f:count()}">
+            <yag:link.zipDownload album="{album}"><f:translate key="tx_yag_controller_album.downloadAsZip"/></yag:link.zipDownload>
+        </f:if>
+    </f:if-->
+
+</f:section>
+
+<f:section name="feEdit">
+    <ptx:rbac.hasAccess hasAny="{1:'album.edit', 2:'album:delete'}">
+        <div class="form-actions">
+            <ul class="nav nav-pills">
+
+                <ptx:rbac.hasAccess object="album" action="edit">
+                    <li><f:link.action action="addItems" controller="Album" arguments="{album: album}"><f:translate key="tx_yag_controller_album_addItems"/></f:link.action></li>
+                    <li><f:link.action action="edit" controller="Album" arguments="{album: album}">showDownloadAsZipLink</f:link.action></li>
+                </ptx:rbac.hasAccess>
+
+                <ptx:rbac.hasAccess object="album" action="delete">
+                    <li><f:link.action action="delete" controller="Album" arguments="{album: album}"><f:translate key="tx_yag_controller_album.deleteAlbum"/></f:link.action></li>
+                </ptx:rbac.hasAccess>
+            </ul>
+        </div>
+    </ptx:rbac.hasAccess>
+</f:section>

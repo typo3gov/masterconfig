@@ -1,0 +1,207 @@
+// ---------------------------------------------------
+// Basic configuration
+// ---------------------------------------------------
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/conf_config_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/conf_lang_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/conf_rendering_setup.txt">
+
+// ---------------------------------------------------
+// Basic navigation objects
+// Need to be imported first as they are referenced by content objects
+// ---------------------------------------------------
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/nav_lang_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/nav_level_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/nav_directory_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/nav_meta_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/nav_breadcrumb_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/nav_service_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/logo_footer_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/nav_footer_setup.txt">
+
+// ---------------------------------------------------
+// Configuration for default content elements
+// ---------------------------------------------------
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/skiplinks_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/sitetitle_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/logo_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/atmopic_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/searchbox_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/headerbox_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/headline_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/teaser_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/content_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/scripts_bottom_setup.txt">
+
+// ---------------------------------------------------
+// Configuration for default properties of the rendering object
+// ---------------------------------------------------
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/seo_title_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/favicon_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/css_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/scripts_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/feeds_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/head_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/skiplinks_setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/subparts_setup.txt">
+
+// ---------------------------------------------------
+// Configuration for other extensions (core elements of this distribution)
+// ---------------------------------------------------
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:a21glossary/static/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/ext/powermail/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/ext/tx_news/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/ext/yag/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/ext/felogin/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/ext/ke_search/setup.txt">
+
+// ---------------------------------------------------
+// Define dynCSS as rendering object for dynamic stylesheet (type = 31919)
+// ---------------------------------------------------
+dynCSS = PAGE
+dynCSS {
+	typeNum = 31919
+	config.disableAllHeaderCode = 1
+	config.additionalHeaders = Content-type: text/css
+	config.admPanel = 0
+
+	#Statische CSS-Vorlage laden
+
+	20 = TEMPLATE
+	20 {
+		template = FILE
+		template.file = {$portal.templates.css.dynamic.filename}
+
+		#Standardwerte fuer Schriftgroessen und Farben definieren:
+		marks.ATMOPIC = IMG_RESOURCE
+		marks.ATMOPIC {
+			file {
+				import.cObject = TEXT
+				import.cObject.value = fileadmin/SITE_MASTER/configuration/img/headerImageFallback.jpg
+				import.cObject.override {
+					required = 1
+					data = levelmedia : -1 , slide
+					#data = levelmedia : -1
+					wrap = uploads/media/|
+				}
+				maxW = 980
+				maxH = 200
+			}
+		}
+		subparts {
+			CONTRAST = COA
+			CONTRAST {
+				10 = COA
+				10 {
+					10 = TEMPLATE
+					10 {
+						template = FILE
+						template.file = {$portal.templates.css.contrast.filename}
+					}
+					stdWrap {
+						if {
+							isTrue.data = GP:contrast
+						}
+					}
+				}
+				20 = COA
+				20 {
+					10 = TEXT
+					10 {
+						value =
+					}
+					stdWrap {
+						if {
+							isFalse.data = GP:contrast
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+[globalVar = TSFE:type = 100]
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = none
+        admPanel = 0
+        metaCharset = utf-8
+        additionalHeaders = Content-Type:text/xml;charset=utf-8
+        disablePrefixComment = 1
+    }
+
+    pageNewsRSS = PAGE
+    pageNewsRSS {
+        typeNum = 100
+        10 < tt_content.list.20.news_pi1
+        10 {
+            switchableControllerActions {
+                News {
+                    1 = list
+                }
+            }
+            settings < plugin.tx_news.settings
+            settings {
+                limit = 30
+                detailPid = 638
+                startingpoint = 138
+                format = xml
+            }
+        }
+    }
+[global]
+
+// ---------------------------------------------------
+// Define page as default rendering object (type = 0)
+// ---------------------------------------------------
+page = PAGE
+page {
+
+	bodyTagCObject = COA
+	bodyTagCObject {
+		// COA to add unique CSS id
+		10 = COA
+		10 {
+			10 = TEXT
+			10 {
+				field = uid
+				noTrimWrap = |id="uid|" |
+			}
+			// COA to add CSS classes
+			20 = COA
+			20 {
+				10 = TEXT
+				10 {
+					#data = levelfield: -1, tx_masterconfig_css_class, slide
+					#data = levelfield: -1, tx_masterconfig_css_class
+					field = tx_masterconfig_css_class
+				}
+				20 = USER_INT
+				20 {
+					userFunc = user_randomClass->randomize
+				}
+				20 >
+				stdWrap {
+					wrap = class="|"
+					required = 1
+				}
+			}
+			stdWrap {
+				noTrimWrap = |<body |>|
+			}
+		}
+		20 < lib.skiplinks
+	}
+
+	// Rendering of the head part
+	headerData.5 < lib.head
+
+	// Rendering of the main document part
+	10 < lib.subparts
+}
+
+[globalVar = TSFE:id = 2]
+page.bodyTagCObject.10.20.10.field >
+page.bodyTagCObject.10.20.10.value = home
+[global]

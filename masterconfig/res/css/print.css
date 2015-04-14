@@ -1,0 +1,273 @@
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+/* Custom Fonts
+   - - - - - - - - - - - - - - - - - - - - - - -  */
+
+
+/* Government Fonts - - - - - - - - - - - - - - - */
+
+@font-face {
+    font-family: "BundesSansWeb";
+    font-style: normal;
+    font-weight: normal;
+    src:  url('../fonts/BundesSansWeb-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BundesSansWeb-Regular.eot') format('embedded-opentype'),
+    url('../fonts/BundesSansWeb-Regular.woff') format('woff'),
+    url('../fonts/BundesSansWeb-Regular.ttf') format('truetype'),
+    url('../fonts/BundesSansWeb-Regular.svgz') format('svg'),
+    url('../fonts/BundesSansWeb-Regular.svg')format('svg');
+}
+@font-face {
+    font-family: "BundesSansWebBold";
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/BundesSansWeb-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BundesSansWeb-Bold.eot') format('embedded-opentype'),
+    url('../fonts/BundesSansWeb-Bold.woff') format('woff'),
+    url('../fonts/BundesSansWeb-Bold.ttf') format('truetype'),
+    url('../fonts/BundesSansWeb-Bold.svgz') format('svg'),
+    url('../fonts/BundesSansWeb-Bold.svg')format('svg');
+}
+@font-face {
+    font-family: "BundesSansWebItalic";
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/BundesSansWeb-Italic.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BundesSansWeb-Italic.eot') format('embedded-opentype'),
+    url('../fonts/BundesSansWeb-Italic.woff') format('woff'),
+    url('../fonts/BundesSansWeb-Italic.ttf') format('truetype'),
+    url('../fonts/BundesSansWeb-Italic.svgz') format('svg'),
+    url('../fonts/BundesSansWeb-Italic.svg')format('svg');
+}
+@font-face {
+    font-family: "BundesSerifWeb";
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/BundesSerifWeb-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BundesSerifWeb-Regular.eot') format('embedded-opentype'),
+    url('../fonts/BundesSerifWeb-Regular.woff') format('woff'),
+    url('../fonts/BundesSerifWeb-Regular.ttf') format('truetype'),
+    url('../fonts/BundesSerifWeb-Regular.svgz') format('svg'),
+    url('../fonts/BundesSerifWeb-Regular.svg')format('svg');
+}
+@font-face {
+    font-family: "BundesSerifWebBold";
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/BundesSerifWeb-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BundesSerifWeb-Bold.eot') format('embedded-opentype'),
+    url('../fonts/BundesSerifWeb-Bold.woff') format('woff'),
+    url('../fonts/BundesSerifWeb-Bold.ttf') format('truetype'),
+    url('../fonts/BundesSerifWeb-Bold.svgz') format('svg'),
+    url('../fonts/BundesSerifWeb-Bold.svg')format('svg');
+}
+
+
+/* Icon Fonts - - - - - - - - - - - - - - - - - - */
+
+@font-face {
+    font-family: 'BLEMaster';
+    src:url('../fonts/BLEMaster.eot?b9bbrx');
+    src:url('../fonts/BLEMaster.eot?#iefixb9bbrx') format('embedded-opentype'),
+    url('../fonts/BLEMaster.woff?b9bbrx') format('woff'),
+    url('../fonts/BLEMaster.ttf?b9bbrx') format('truetype'),
+    url('../fonts/BLEMaster.svg?b9bbrx#BLEMaster') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    background: transparent !important;
+    font-family: BundesSansWeb, Helvetica, Arial, Geneva, sans-serif !important;
+    /* color: #000 !important; Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+body {
+    font-size: 15pt;
+    line-height: 22pt;
+    margin: 40px 100px 0 40px;
+}
+
+a,
+a:visited {
+    text-decoration: underline;
+}
+
+a[href]:after {
+    content: " (" attr(href) ")";
+}
+
+abbr[title]:after {
+    content: " (" attr(title) ")";
+}
+
+/*
+ * Don't show links for images, or javascript/internal links
+ */
+
+.ir a:after,
+a.startLink:after,
+a[href^="javascript:"]:after,
+a[href^="#"]:after,
+figure a[href]:after {
+    content: "";
+}
+
+.teaser a.buttonBig {
+    display: none;
+}
+
+pre,
+blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+    padding-left: 1em;
+}
+
+thead {
+    display: table-header-group; /* h5bp.com/t */
+}
+
+tr,
+img {
+    page-break-inside: avoid;
+}
+
+img {
+    max-width: 100% !important;
+    border: 0;
+}
+
+@page {
+    margin: 0.5cm;
+}
+
+p,
+h2,
+h3 {
+    orphans: 3;
+    widows: 3;
+}
+
+h2,
+h3 {
+    page-break-after: avoid;
+}
+
+h2 {
+    font-family: BundesSerifWeb, Comic, Times, 'Times New Roman', serif !important;
+    font-size: 22pt;
+    line-height: 28pt;
+}
+
+h2.moduleHeader {
+    color: #000000;
+    font-family: BundesSansWeb, Helvetica, Arial, Geneva, sans-serif !important;
+    font-size: 14pt;
+    text-transform: uppercase;
+}
+
+h3 {
+    color: #23614E;
+    font-family: BundesSerifWeb, Comic, Times, 'Times New Roman', serif !important;
+    font-size: 18pt;
+    line-height: 27pt;
+}
+
+h3.moduleHeader {
+    color: #000000;
+    font-family: BundesSansWeb, Helvetica, Arial, Geneva, sans-serif !important;
+    font-size: 14pt;
+    text-transform: uppercase;
+}
+
+h4 {
+    color: #23614E;
+    font-family: BundesSansWeb, Helvetica, Arial, Geneva, sans-serif !important;
+    font-size: 16pt;
+    line-height: 22pt;
+}
+
+h4.moduleHeader {
+    color: #000000;
+    text-transform: uppercase;
+}
+
+h5 {
+    color: #00000;
+    font-family: BundesSansWeb, Helvetica, Arial, Geneva, sans-serif !important;
+    font-size: 16pt;
+}
+
+h5.moduleHeader {
+    text-transform: uppercase;
+}
+
+a.moduleButton.BG-button {
+    display: none;
+}
+
+div.module.imageOnly {
+    display: none;
+}
+
+/* .module p {
+    font-family: BundesSansWeb, Helvetica, Arial, Geneva, sans-serif !important;
+    font-size: .9375em !important;
+    line-height: 1.46667 !important;
+} */
+
+#idStage {
+    display: none !important;
+}
+
+.visuallyhidden {
+    display: none !important;
+}
+
+.metaNavContainer {
+    display: none !important;
+}
+
+.mainNavButton {
+    display: none !important;
+}
+
+nav {
+    display: none !important;
+}
+
+.breadcrumb {
+    display: none !important;
+}
+
+footer {
+    display: none !important;
+}
+
+h1 img {
+    margin-left: -15px;
+}
+
+.banner h1 img:first-child {
+    position: relative;
+    left: 0;
+    top: -22px;
+}
+
+.right {
+    float: right;
+    margin-left: 2.442996743%;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    font-size: 0.8em;
+}

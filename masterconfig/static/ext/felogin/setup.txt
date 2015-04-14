@@ -1,0 +1,1 @@
+plugin.tx_felogin_pi1.templateFile = EXT:masterconfig/res/extensions/felogin/index.html

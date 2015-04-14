@@ -1,0 +1,8 @@
+plugin.tx_kesearch_pi1 {
+	#templateFile = fileadmin/template/ke_search.html
+	cssFile = 
+}
+plugin.tx_kesearch_pi2 {
+	#templateFile = fileadmin/template/ke_search.html
+	cssFile = 
+}

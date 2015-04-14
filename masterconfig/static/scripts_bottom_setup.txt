@@ -1,0 +1,147 @@
+
+
+lib.scripts_bottom = COA
+lib.scripts_bottom {
+	10 = TEXT
+	10{
+		value (
+			<script src="typo3conf/ext/masterconfig/res/scripts/js/plugins.js"></script>
+		)
+	}
+	20 = TEXT	
+	20{
+		value (
+			<!-- toggle class to show hidden elements -->
+			<script>
+				window.onload = function() {
+					$( ".opener" ).click(function() {
+						$( this ).toggleClass( "open" );
+					});
+				};
+			</script>
+		)
+	}	
+	30 = TEXT
+	30{
+		value(
+			<!-- flexible navigation -->
+			<script type="text/javascript" src="typo3conf/ext/masterconfig/res/scripts/js/vendor/jquery.hoverIntent.minified.js"></script>
+			<script type="text/javascript" src="typo3conf/ext/masterconfig/res/scripts/js/vendor/jquery.flexnav.min.js"></script>
+		)
+	}
+	
+	40 = TEXT
+	40{
+		value(
+			<script>
+				$(".mainNav").flexNav({
+					'animationSpeed' : 250, // default drop animation speed
+					'transitionOpacity': true, // default opacity animation
+					'buttonSelector': '.mainNavButton', // default menu button class
+					'hoverIntent': true, // use with hoverIntent plugin
+					'hoverIntentTimeout': 150, // hoverIntent default timeout
+					'calcItemWidths': false // dynamically calcs top level nav item widths
+				});
+
+                //offset for menu arrow
+                var liWidth = 0;
+				$(".mainNav .navLevel1").each(function(index, value){
+				    liWidth = parseInt($(this).innerWidth() / 2) - 1;
+				    var newIndex = index + 1;
+				    if (liWidth) {
+    				    addCSSRule(document.styleSheets[0], '.mainNav li.navLevel1:nth-child(' + newIndex + ') ul.navLevel2:before', 'left: ' + liWidth + 'px;');
+                    }
+				});
+				var lastLiWidth = liWidth - 6;
+				addCSSRule(document.styleSheets[0], '.mainNav li.navLevel1:last-child ul.navLevel2:before', 'left: auto !important; right: ' + lastLiWidth + 'px !important;');
+
+                window.onload = function() {
+                    //right aligment of hover
+                    var liWidths = new Array();
+                    $("#idMainNav li.navLevel1").each(function(index, value){
+                        liWidths[index] = $(this).outerWidth(true);
+                    });
+                    var ulWidth = $("#idMainNav li.navLevel1 ul.navLevel2").first().outerWidth(true);
+                    $("#idMainNav li.navLevel1").each(function(index, value){
+                        if ( (index != liWidths.length-1) && ($(this).find('ul.navLevel2').length > 0)) {
+                            var liSize = 0;
+                            for (i = liWidths.length-1; i >= index; i--) {
+                                liSize = liSize + liWidths[i];
+                            }
+                            if (liSize < ulWidth) {
+                                $(this).find('ul.navLevel2').first().css('left', '-' + (ulWidth - liSize) + 'px');
+                                var tempLeft = parseInt($(this).innerWidth() / 2) - 1;
+                                addCSSRule(document.styleSheets[0], '.mainNav li.navLevel1:nth-child(' + (index+1) + ') ul.navLevel2:before', 'left: ' + (ulWidth - liSize + tempLeft) + 'px !important;');
+                            }
+                        }
+                    });
+                };
+
+                function addCSSRule(sheet, selector, rules, index) {
+                	if("insertRule" in sheet) {
+                		sheet.insertRule(selector + "{" + rules + "}", index);
+                	}
+                	else if("addRule" in sheet) {
+                		sheet.addRule(selector, rules, index);
+                	}
+                }
+			</script>
+		)
+	}
+	50 = TEXT
+	50{
+		value(
+			<!-- accessible tabs  http://blog.ginader.de/archives/2009/02/07/jQuery-Accessible-Tabs-Wie-man-Tabs-WIRKLICH-zugaenglich-macht.php -->
+			<script src="typo3conf/ext/masterconfig/res/scripts/js/vendor/jquery.tabs.js" type="text/javascript" charset="utf-8"></script>
+		) 
+	}
+	60 = TEXT
+	60{
+		value(
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('.tabs').accessibleTabs({
+					    // Der Name der Klasse die dem Div zugewiesen
+					    // welche um das Markup herumgeschrieben wird
+					    wrapperClass: 'tabContent',
+					    // Der Name der Klasse die das aktuelle Tab markiert
+					    currentClass: 'current',
+					    // Tag oder valider Query Selector der Elemente 
+					    // aus denen die Tabs Navigation erzeugt wird
+					    // (die Originale werden entfernt)
+					    tabhead: 'h3',
+					    // Tag oder valider Query Selector der Elemente die
+					    // als Inhalte der Tabs genutzt werden sollen
+					    tabbody: '.tabbody',
+					    // Anzeigeeffekte:  'fadeIn', 'slideDown' oder 'show'
+					    fx:'fadeIn',
+					    // Geschwindigkeit (String|Number): 'slow', 'normal', oder 'fast')
+					    // oder die Milisekunden die die Anzeigeeffekte dauern sollen
+					    fxspeed: 'normal',
+					    // Text um Screenreadern anzuzeigen welches der ausgewählte Tab ist
+					    currentInfoText: 'current tab: ',
+					    // Definition wo der Text eingefügt wird
+					    // Entwender 'prepend' oder 'append'
+					    currentInfoPosition: 'prepend',
+					    // Klasse des span mit dem Infotext
+					    currentInfoClass: 'current-info'
+					});
+				});
+			</script>
+		)
+	}	
+	70 = TEXT
+	70{
+		value(
+			<script type="text/javascript">
+			$(function() {
+		    	$('#language').change(function() {
+		            $('#languageSwitch').submit();
+		     	});
+			});
+			</script>
+		)
+	}
+	
+}
+

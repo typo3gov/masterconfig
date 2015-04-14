@@ -1,0 +1,61 @@
+// ---------------------------------------------------
+// Default config for logo rendering including the most common properties:
+// * only linked on subpages
+// * configurable/translateable alt/title strings
+// * configurable link destination
+// ---------------------------------------------------
+lib.logo = COA
+lib.logo {
+	10 < styles.content.get
+	10 {
+		select.pidInList = {$portal.pid.logos}
+		renderObj = COA
+		renderObj {
+			10 = TEXT
+			10 {
+				field = image
+				wrap = <img css_class src="|" /> 
+			}
+		}
+		stdWrap {
+			replacement {
+				10 {
+					search = css_class
+					replace =  || class="right" |*| class="right"
+					useOptionSplitReplace = 1
+				}
+				20 {
+					search = ../../fileadmin
+					replace = /fileadmin
+				}
+			}
+		}
+	}
+	stdWrap {
+		wrap = <h1 class="clearfix">|</h1>
+		typolink {
+			parameter = {$portal.pid.root}
+			addQueryString = 1
+			ATagParams = class="startLink"
+		}
+	}
+}
+
+[globalVar = TSFE:id = {$portal.pid.search}]
+lib.logo {
+	stdWrap {
+		typolink {
+			addQueryString = 0
+		}
+	}
+}
+[global]
+
+[globalVar = TSFE:id = {$portal.pid.root}]
+lib.logo {
+	stdWrap {
+		typolink >
+		wrap = <h1 class="clearfix"><strong>|</strong></h1>
+	}
+}
+[global]

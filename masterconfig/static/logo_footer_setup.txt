@@ -1,0 +1,11 @@
+lib.footer.logo = COA
+lib.footer.logo {
+	10 = TEXT
+	10 {
+		value = {$portal.footerlogo.filename}
+		stdWrap {
+			wrap = <img src="/|" alt="{$portal.footerlogo.altText}" />
+		}
+	}
+	
+}

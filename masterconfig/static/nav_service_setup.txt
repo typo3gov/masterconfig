@@ -1,0 +1,47 @@
+lib.nav.service >
+lib.nav.service = TEXT
+lib.nav.service.value =
+
+[globalVar = TSFE:id = {$portal.pid.root}]
+lib.nav.service = COA
+lib.nav.service {
+	20 = HMENU
+	20 {
+		special = directory
+		special.value = {$portal.pid.servicenavigation}
+		1 = TMENU
+		1 {
+			NO = 1
+			ACT = 1
+			CUR = 1
+			noBlur = 1
+			expAll = 1
+			wrap = |
+			NO {
+				wrapItemAndSub = <li class="serviceItem">|</li>
+				ATagParams.cObject = TEXT
+				ATagParams.cObject{
+					field = tx_masterconfig_css_class
+					wrap = class = "|"
+				} 
+				ATagBeforeWrap = 1
+				linkWrap = <br>|
+			}
+			CUR < .NO
+			CUR {
+				doNotLinkIt = 1
+				linkWrap = <strong>|</strong>
+				wrapItemAndSub = <li class="serviceItem">|</li>
+			}
+			ACT < .NO
+			ACT {
+				wrapItemAndSub = <li class="serviceItem">|</li>
+			}
+		}
+	}
+	stdWrap {
+		required = 1
+		wrap = <section class="serviceArea"><div class="center"><ul>|</ul></div></section>
+	}
+}
+[global]

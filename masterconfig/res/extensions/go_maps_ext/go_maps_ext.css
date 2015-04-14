@@ -1,0 +1,17 @@
+.module .tx-go-maps-ext ul.gomapsext-cats li{
+    list-style-type:none;
+}
+
+.module .tx-go-maps-ext ul.gomapsext-cats li input[type=checkbox]{
+    box-sizing: border-box;
+    height: auto;
+    line-height: 2.33333;
+    margin-top: 0.4em;
+    width: auto;
+}
+
+.module .tx-go-maps-ext ul.gomapsext-cats li label{
+    display: inline;
+    margin: 1em;
+    
+}

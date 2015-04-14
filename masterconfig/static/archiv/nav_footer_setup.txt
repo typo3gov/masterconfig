@@ -1,0 +1,113 @@
+// ---------------------------------------------------
+// Basic configuration for directory-based navigations
+// ---------------------------------------------------
+#####<INCLUDE_TYPOSCRIPT: source="FILE:EXT:masterconfig/static/searchbox_setup.txt">
+lib.nav.footer = COA
+lib.nav.footer {
+	10 = COA
+	10 {
+		10 = TEXT
+		10.value (
+			<h2 class="visuallyhidden">Fußzeile</h2>
+			<section class="controlElements">
+				<div class="center">
+				<a href="#" class="icon-Arrow_up">{$portal.langlabels.totop}</a>
+				<script type="text/javascript">
+						<!--
+							if (window.print) {document.write('<a class="icon-Icon_Drucken" href="javascript:window.print()">{$portal.langlabels.print}</a>');}
+						//-->
+				</script>
+				
+		)
+		20 < lib.searchbox
+		20.30.value = <input type="search" placeholder="{$portal.langlabels.search.placeholder}" id="idKeywordSearchBottom">
+		30 = TEXT
+		30.value = </div><!-- /.center --></section><!-- /.controlElements -->
+		######## Footerstruktur wie hauptmenue #############
+        40 < lib.nav.level
+        40{
+			10 {
+			    wrap = <section class="shortcuts center"><h2 class="visuallyhidden">Direktlinks</h2>|</section><!-- /.shortcuts center -->
+			    stdWrap.if.isTrue.data = register:count_menuItems
+				1 >
+	        	1 = TMENU
+				1 {
+					NO = 1
+					ACT = 1
+					CUR = 1
+					noBlur = 1
+					expAll = 1
+					wrap = |
+					NO {
+						linkWrap = <h2>|</h2>
+						wrapItemAndSub = <section>|</section>
+					}
+				}
+				2 < .1
+				2{
+					wrap = <ul>|</ul>
+					NO{
+						linkWrap =
+						wrapItemAndSub =<li>|</li>
+					}
+					CUR < .NO
+					CUR {
+						doNotLinkIt = 1
+						linkWrap = <strong>|</strong>
+						wrapItemAndSub = <li>|</li>
+					}
+					ACT < .NO
+					ACT {
+						doNotLinkIt = 1
+						linkWrap = <strong>|</strong>
+						wrapItemAndSub = <li>|</li>
+					}
+				}
+				3 < .2
+				4 < .2
+			}
+        }
+        
+		50 = COA
+		50 {
+			10 = TEXT
+			10 {
+				data = date : U
+				strftime = %Y
+				noTrimWrap = |<p class="copy">&copy; | BLE</p>|
+			}
+			20 = HMENU
+			20 {
+				special = directory
+				special.value = {$portal.pid.metanavigation}
+				wrap = <ul>|</ul>
+				1 = TMENU
+				1 {
+					NO = 1
+					ACT = 1
+					CUR = 1
+					noBlur = 1
+					expAll = 0
+					wrap = |
+					NO {
+						wrapItemAndSub = <li>|</li>
+					}
+					CUR < .NO
+					CUR {
+						doNotLinkIt = 1
+						linkWrap = <strong>|</strong>
+						wrapItemAndSub = <li>|</li>
+					}
+					ACT < .NO
+					ACT {
+						doNotLinkIt = 1
+						linkWrap = <strong>|</strong>
+						wrapItemAndSub = <li>|</li>
+					}
+				}
+			}
+			stdWrap.wrap = <section class="metaEssentials center">|</section><!-- /.metaEssentials center -->
+		}
+	}
+	stdWrap.wrap = <footer>|</section></footer>
+}

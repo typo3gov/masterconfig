@@ -1,0 +1,18 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+
+<ul class="pagination">
+    <f:if condition="{pager.currentPage} != 1">
+        <li class="previous">
+            <extlist:link.action action="show" arguments="{itemListOffset: pager.previousPage}"><span>&lt;</span></extlist:link.action>
+        </li>
+    </f:if>
+    <f:if condition="!{lastItem}">
+        <li class="next">
+            <extlist:link.action action="show" arguments="{itemListOffset: pager.nextPage}"><span>&gt;</span></extlist:link.action>
+        </li>
+    </f:if>
+</ul>
+<div class="tx-yag-navigator tx-yag-current">
+    Bild {pager.firstItemIndex} <f:translate key="pager.of" default="of" /> {pager.itemCount}
+</div>

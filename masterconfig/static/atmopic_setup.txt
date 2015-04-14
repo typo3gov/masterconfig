@@ -1,0 +1,30 @@
+// ---------------------------------------------------
+// Default config for atmopic/banner rendering
+// for inline styles use IMG_RESOURCE
+// ---------------------------------------------------
+
+lib.atmopic = COA
+lib.atmopic {
+	10 = IMG_RESOURCE
+	10 {
+		file {
+			import {
+				cObject = TEXT
+				cObject {
+					value = {$portal.atmopic.filename}
+					override {
+						required = 1
+						cObject = FILES
+						cObject {
+							references.data = levelmedia:-1, slide
+							references.listNum = 0
+							renderObj = TEXT
+							renderObj.data = file:current:publicUrl:url('|')";
+						}
+					}
+				}
+			}
+		}
+	}
+	stdWrap.wrap = style="background-image: url(/|);"
+}

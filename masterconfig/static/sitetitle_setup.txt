@@ -1,0 +1,23 @@
+// ---------------------------------------------------
+// Insert page title as h1
+// ---------------------------------------------------
+lib.sitetitle = COA
+lib.sitetitle {
+	10 = TEXT
+	10 {
+		value = {$portal.general.title}
+		#wrap = <h1>|</h1>
+	}
+}
+
+// ---------------------------------------------------
+// Insert page subtitle as h2
+// ---------------------------------------------------
+lib.sitesubtitle = COA
+lib.sitesubtitle {
+	10 = TEXT
+	10 {
+		value = {$portal.general.subtitle}
+		wrap = <span>|</span>
+	}
+}

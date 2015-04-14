@@ -1,0 +1,84 @@
+
+lib.selectedLayout = COA
+lib.selectedLayout {
+	10 = CASE
+	10 {
+		key.field = uid
+
+		2 = TEXT
+		2.value = headerbox.html
+
+		default = CASE
+		default {
+			key.field = backend_layout
+			key.ifEmpty.data = levelfield:-2, backend_layout_next_level, slide
+			6 = TEXT
+			6.value = headerbox.html
+
+			7 = TEXT
+			7.value = empty.html
+			
+			default = TEXT
+			default.value = main_default.html
+		}
+	}
+}
+
+// ---------------------------------------------------
+// Configuration for template type main
+// ---------------------------------------------------
+lib.subparts = TEMPLATE
+lib.subparts {
+	template = FILE
+	#template.file = {$portal.templates.directory.htmlMaster}main/main_default.html
+	template.file.cObject = COA
+	template.file.cObject {
+		10 < lib.selectedLayout
+		stdWrap.wrap = {$portal.templates.directory.html}/|
+	}
+
+	workOnSubpart = DOCUMENT
+
+	marks {
+		TOTOPLABEL = TEXT
+		TOTOPLABEL {
+			value = {$portal.langlabels.totop}
+		}
+		PRINTLABEL = TEXT
+		PRINTLABEL {
+			value = {$portal.langlabels.print}
+		}
+	}
+
+
+	subparts {
+		SUBPART-SKIP-LINKS < lib.skiplinks
+		SUBPART-ATMOPIC < lib.atmopic
+		SUBPART-AUTHENTIFICATION < lib.authentification
+		SUBPART-CONTENT-TEASER < lib.teaser
+		SUBPART-DOCUMENTTITLE < lib.title
+		SUBPART-LANGUAGESELECTOR < lib.nav.lang
+		SUBPART-LOGO < lib.logo
+		SUBPART-SEARCH < lib.searchbox
+		SUBPART-SITESUBTITLE < lib.sitesubtitle
+		SUBPART-SITETITLE < lib.sitetitle
+		SUBPART-HEADER-BOX < lib.headerbox
+		SUBPART-PAGE-HEADLINE < lib.headline
+
+		SUBPART-NAVIGATION-META < lib.nav.meta
+		SUBPART-NAVIGATION-SERVICE < lib.nav.service
+		SUBPART-NAVIGATION-MAIN < lib.nav.level
+		SUBPART-NAVIGATION-SUB < lib.nav.level
+		SUBPART-NAVIGATION-BREADCRUMB < lib.nav.breadcrumb
+		SUBPART-NAVIGATION-FOOTER < lib.nav.footer
+
+
+		SUBPART-CONTENT-COLUMN0 < lib.content.slot0
+
+		SUBPART-CONTENT-COLUMN1 < lib.content.slot1
+		SUBPART-CONTENT-COLUMN2 < lib.content.slot2
+		SUBPART-CONTENT-COLUMN3 < lib.content.slot3
+
+		SUBPART-SCRIPTS-BOTTOM < lib.scripts_bottom
+	}
+}

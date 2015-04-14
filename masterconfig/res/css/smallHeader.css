@@ -1,0 +1,44 @@
+/*   Projekt: master-ble
+     Stand:   09.02.2015
+     Autor:   ah, mh
+		 
+		 Erläuterung:
+		 master-ble mit niedrigem Kopfbereich */
+
+/* Styles für Testzwecke (Debugging )
+body {
+	border: 10px solid red !important;
+}
+body#uid2:before {
+	content: "Dies ist die Startseite";
+	font-size: 2em;
+	color: red;
+}
+body:not(#uid2):before {
+	content: "Dies ist NICHT die Startseite";
+	font-size: 2em;
+	color: green;
+}
+
+*/
+
+body {
+	border-top-width: 0;
+}
+header.banner {
+	height: 121px;
+}
+.banner > :first-child {
+	height: auto;
+	margin-top: 0;
+}
+.banner nav {
+	position: relative;
+	top: -8px;
+}
+body .stage .center:last-child {
+	min-height: 0;
+}
+.stage .center:last-child h1 {
+	margin: 0;
+}

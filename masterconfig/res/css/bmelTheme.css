@@ -1,0 +1,226 @@
+/* Diese Datei überschreibt BLE-Farben des master-ble mit den Farben des BMEL
+   und macht so aus dem master-ble einen master-bmel ;-)
+   Wird durch Anhängen von folgendem Parameter an eine beliebige master-ble-URL aktiviert:
+   ?style=1
+*/
+
+/* =========================================================================
+   = BMEL - FARBANPASSUNGEN                                                =
+   =========================================================================
+
+   BMEL-Streifen (Seitenkopf) 
+   ========================================================================= */
+
+html {
+	border-top: 10px solid #b94800; /* BMEL-orange */
+	padding-top: 8px;
+}
+body {
+	border-top-color: #5e7d2e; /* BMEL-grün */
+}
+
+/* Allgemeine Farben und Hintergründe
+   ========================================================================= */
+
+a {
+	color: #b94800; /* BMEL-orange */
+}
+.BG-darkAccent {
+	background-color: #5e7d2e; /* BMEL-grün */
+}
+.BG-lightAccentAlt3 {
+	background-color: #b94800; /* BMEL-orange */
+}
+.BG-button,
+.BG-lightAccentAlt1,
+.downloadList .moduleButton {
+	background-color: #b94800; /* BMEL-orange */
+	color: #fff;
+}
+.BG-button:before,
+.BG-lightAccentAlt1:before {
+	color: #000;
+}
+.downloadList .moduleButton:before {
+	background-color: #b94800; /* BMEL-orange */
+	color: #fff;
+}
+
+/* Boxes
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+[class$="Box"] {
+	background-image: url(../img/layout/bgDefaultBox-bmel.png);
+}
+
+
+/* Spezielle Farben
+   ========================================================================= */
+
+/* Hauptnavigation
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.mainNav .navLevel2 a {
+    background-color: #fff;
+}
+
+/* Nav ab 3. Ebene (Linke Spalte)
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.subNav>ul>li.navLevel3:first-child>strong {
+	border-top: 1px solid #C4C8CD;
+}
+.subNav .navLevel3 a:active,
+.subNav .navLevel3 a:focus,
+.subNav .navLevel3 a:hover {
+	background-color: #C4C8CD;
+}
+.subNav ul li.navLevel3 strong {
+	background-color: #fff;
+	font-weight: bold;
+	border-bottom-color: #fff;
+}
+.subNav ul li.navLevel3 a {
+	border-bottom-color: #fff;
+}
+.subNav li.navLevel3 a.on {
+	background-color: #fff;
+}
+.subNav ul li.navLevel4 a,
+.subNav ul li.navLevel4 strong {
+	padding-left: 3em;
+	border-bottom-color: #C4C8CD;
+}
+.subNav ul.navLevel4 {
+	border-top: 1px solid #C4C8CD;
+}
+.subNav .navLevel3 strong:after {
+	display: none; /* BLE: just some bright green */
+}
+.subNav .navLevel4 a:active,
+.subNav .navLevel4 a:focus,
+.subNav .navLevel4 a:hover {
+	background-color: #fff;
+	text-decoration: underline;
+}
+
+/* Bühne Startseite 
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.home .promotion {
+	background-color: rgba(94,125,46,0.9);
+}
+
+/* Breadcrumb Navigation
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.breadcrumb a {
+  color: #fff;
+	background-color: #b94800; /* BMEL-orange */
+}
+
+.subNav .navLevel4 a {
+	background-color: #fff;
+}
+
+/* Terminteaser */
+
+.teaser.calendar .date p a .day,
+.teaser.calendar .date p a .month {
+	color: #fff;
+}
+/* Zwischenüberschriften in Artikeln
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+caption,
+.news-text-wrap h3,
+body .defaultContribution h3,
+body .defaultContribution h4,
+body .newsDate h3,
+body .newsDate h4 {
+	color: #000;                 /* BLE: dark green */
+}
+
+/* Footer
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+body > footer {
+    background-color: #5e7d2e; /* BMEL-grün */
+}
+.controlElements {
+	border-bottom: 4px solid #b94800; /* BMEL-orange */
+}
+
+/* RMS
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+html #rms .formHeader ul li.current span:before {
+    border: 1px solid #5e7d2e;  /* BMEL-grün */
+}
+html .formHeader ul li span,
+html .formHeader ul li.current span {
+    color: #5e7d2e; /* BMEL-grün */
+}
+html #rms .formHeader ul li span:before,
+html #rms .formHeader ul li.current span:before {
+    color: #5e7d2e; /* BMEL-grün */
+}
+html .formHeader ul li.done span:before {
+    color: #74b817;
+}
+
+/*
+#rms ul li,
+#rms ul label {
+	clear: both;
+}
+#rms .PersonalDaten ul {
+	padding: 0;
+}
+#rms .PersonalDaten ul li {
+	display: block;
+}
+#rms ul li [type="radio"],
+#rms ul li [type="radio"] + label,
+#rms ul li [type="checkbox"],
+#rms ul li [type="checkbox"] + label {
+	float: left;
+}
+*/
+
+
+.antworten:before,
+.antworten:after,
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.antworten:after,
+.clearfix:after {
+    clear: both;
+}
+.antworten,
+.clearfix {
+    *zoom: 1;
+}
+
+/* =========================================================================
+   = BMEL - ANPASSUNGEN  (AUßER FARBE)                                     =
+   ========================================================================= */
+
+.mainNav ul.navLevel2 {
+  border-radius: 8px;
+	background-clip: padding-box;
+}
+.mainNav ul.navLevel2 > li:first-child {
+}
+.mainNav ul.navLevel2 > li:first-child,
+.mainNav ul.navLevel2 > li:first-child a,
+.mainNav ul.navLevel2 > li:first-child strong {
+  border-radius: 8px 8px 0 0;
+	background-clip: padding-box;
+	background-color: #fff;
+}
+.mainNav ul.navLevel2 > li:last-child,
+.mainNav ul.navLevel2 > li:last-child a,
+.mainNav ul.navLevel2 > li:last-child strong {
+  border-radius: 0 0 8px 8px;
+  background-clip: padding-box;
+}

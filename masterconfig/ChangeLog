@@ -1,0 +1,39 @@
+2009-03-03 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* initial code generated with kickstarter
+
+2009-09-03 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* sample configuration added
+
+2009-09-03 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* ressources added
+	
+2009-16-03 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* removed old TS templates, started to copy new default TS to static templates
+	
+2009-16-03 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* cleaned up basic configuration, rendering configuration and languages configuration
+	
+2009-17-03 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* added page/user TSconfig, cleaned up and added more configuraton
+	* ToDo: remove old TS setup from rlmp_templateselector extension and ask Robert Lemke
+	* to change the TemplateSelector Extension so that it works with static templates
+
+2012-31-01 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* renamed gov_masterconfig and gov_localconfig to masterconfig and localconfig
+	* removed most contents of localconf
+	* restructured static folder and remove xhtml naming scheme
+	* Replaced indexed search with ke_search
+	* Replaced tt_news with tx_news
+
+2015-27-01 Sacha Vorbeck  <vorbeck@TYPO3Tutor.de>
+
+	* removed localconfig
+	* Fluid rendering
+	* Renamed columns for grid-elements

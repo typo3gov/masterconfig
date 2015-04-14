@@ -1,0 +1,37 @@
+// -----------------------------------
+// set default headline-type to 2
+// -----------------------------------
+content {
+	defaultHeaderType = 2
+}
+
+// -----------------------------------
+// set maximum width for images in
+// content-element image and text with image
+// -----------------------------------
+styles {
+	content {
+		imgtext {
+			maxW = 1960
+			maxWInText = 1024
+			#separateRows = 1
+			linkWrap {
+				lightboxEnabled = 1
+				lightboxRelAttribute = fancybox{field:uid}
+				lightboxCssClass = fancybox
+			}
+		}
+	}
+}
+
+PAGE_TARGET =
+
+[globalVar = TSFE:page|backend_layout = 2]
+styles {
+	content {
+		imgtext {
+			maxW = 1960
+		}
+	}
+}
+[global]

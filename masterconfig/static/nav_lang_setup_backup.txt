@@ -1,0 +1,82 @@
+lib.nav.lang = COA
+lib.nav.lang {
+	10 = HMENU
+	10 {
+		special = language
+		special {
+			value = 0,2,3,4,5,6
+			normalWhenNoLanguage = 0
+		}
+		1 = TMENU
+		1 {
+			noBlur = 1
+			NO = 1
+			ACT = 1
+			CUR = 1
+			USERDEF1 = 1
+			USERDEF2 = 1
+             NO {
+				doNotLinkIt = 1
+				wrapItemAndSub = <option value="
+				linkWrap = |">Deutschn</option> || |">Englishn</option> || |">Fran&ccedil;aisn</option> || |">Русский</option> || |">Espa&ntilde;ol</option> || |">Italiano</option>
+				stdWrap {
+					override = Deutschn || Englishn || Fran&ccedil;aisn || Русский || Espa&ntilde;ol || Italiano
+					typolink {
+						parameter.data = page:uid
+						additionalParams = &L=0 || &L=2 || &L=3 || &L=4 || &L=5 || &L=6
+						addQueryString = 1
+						addQueryString.method = GET
+						useCacheHash = 0
+						no_cache = 1
+						returnLast = url
+					}
+				}
+			}
+			
+			CUR <. NO
+			CUR {
+				wrapItemAndSub = <option selected="selected" value="
+				linkWrap = |">Deutschc</option> || |">Englishc</option> || |">Fran&ccedil;aisc</option> || |">Русский</option> || |">Espa&ntilde;ol</option> || |">Italiano</option>
+			}
+			#CUR >
+			ACT <. NO
+			ACT {
+				doNotLinkIt = 1
+				wrapItemAndSub = <option selected="selected" value="
+				linkWrap = |">Deutsch</option> || |">English</option> || |">Fran&ccedil;ais</option> || |">Русский</option> || |">Espa&ntilde;ol</option> || |">Italiano</option>
+				stdWrap {
+					override = Deutscha || Englisha || Fran&ccedil;aisa || Русский || Espa&ntilde;ol || Italiano
+					typolink {
+						parameter.data = page:uid
+						additionalParams = &L=0 || &L=2 || &L=3 || &L=4 || &L=5 || &L=6
+						addQueryString = 1
+						addQueryString.method = GET
+						useCacheHash = 0
+						no_cache = 1
+						returnLast = url
+					}
+				}
+			}
+			#ACT >
+			USERDEF1 <. NO
+			USERDEF1 {
+				#doNotLinkIt = 1
+				#doNotShowLink = 1
+				wrapItemAndSub = <option selected="selected" value="
+				linkWrap = |">Deutschu1</option> || |">Englishu1</option> || |">Fran&ccedil;aisu1</option> || |">Русский</option> || |">Espa&ntilde;ol</option> || |">Italiano</option>
+			}
+			USERDEF2 <. NO
+			USERDEF2 {
+				#doNotLinkIt = 1
+				#doNotShowLink = 1
+				wrapItemAndSub = <option selected="selected" value="
+				linkWrap = |">Deutschu2</option> || |">Englishu2</option> || |">Fran&ccedil;aisu2</option> || |">Русский</option> || |">Espa&ntilde;ol</option> || |">Italiano</option>
+			}
+		}
+	}
+	stdWrap {
+		wrap = <form id="languageSwitch" class="languageSwitch" name="langSwitch" action="#" method="get" onChange="window.location=document.langSwitch.languageLink.options[document.langSwitch.languageLink.selectedIndex].value;"><select id="language" name="languageLink"><option>{$portal.langlabels.switchLang}</option>|</select></form>
+		required = 1
+	}
+	
+}

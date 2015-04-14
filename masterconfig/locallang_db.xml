@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'masterconfig'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pages.tx_masterconfig_teaserimage">Teaserbild</label>
+			<label index="pages.tx_masterconfig_teaseronoff">Teaser an/aus</label>
+			<label index="tt_content.menu_type_pi1">Inhaltsübersicht mit eingerückten Überschriften</label>
+		</languageKey>
+	</data>
+</T3locallang>

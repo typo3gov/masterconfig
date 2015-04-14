@@ -1,0 +1,49 @@
+// ---------------------------------------------------
+// Render SEO title tag that maps the rootline
+// ---------------------------------------------------
+lib.seo.title = COA
+lib.seo.title {
+	10 = COA
+	10 {
+		10 = TEXT
+		10 {
+			field = title
+			wrap = |
+		}
+		20 = COA
+		20 {
+			10 = TEXT
+			10 {
+				data = fullRootLine : 1,title
+				noTrimWrap = | - ||
+				required = 1
+			}
+			stdWrap {
+				if {
+					value = 254
+					equals.data = levelfield : 1 ,doktype
+					negate = 1
+				}
+			}
+		}
+		stdWrap {
+		}
+	}
+	20 = TEXT
+	20 {
+	value = {$portal.general.titlePostfix}
+		noTrimWrap = | - ||
+	}
+	stdWrap.noTrimWrap = |<title>|</title>|
+}
+
+// ---------------------------------------------------
+// Remove section-title for all pages on first level
+// ---------------------------------------------------
+[treeLevel = 1]
+lib.seo.title {
+	10 {
+		20 >
+	}
+}
+[end]

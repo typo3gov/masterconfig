@@ -1,0 +1,48 @@
+lib.headline = COA
+lib.headline{
+	10 = TEXT
+	10 {
+		data = leveltitle:-2
+		wrap = <h1 class="pageHeadline">|</h1>
+	}
+}
+
+[PIDinRootline=133,296,414]
+lib.headline = COA
+lib.headline{
+	10 {
+		data = leveltitle:-1
+	}
+}
+[end]
+
+[treeLevel = 1]
+lib.headline = COA
+lib.headline{
+	10 {
+		data = leveltitle:-1
+	}
+}
+[end]
+
+
+
+[globalVar = GP:tx_news_pi1|newshirsen > 0]
+temp.newsTitle = RECORDS
+temp.newsTitle {
+	source = {GP:tx_news_pi1|news}
+	source.insertData = 1
+	tables = tx_news_domain_model_news
+	conf.tx_news_domain_model_news >
+	conf.tx_news_domain_model_news = TEXT
+	conf.tx_news_domain_model_news.field = title
+}
+
+lib.headline = COA
+lib.headline{
+	10 < temp.newsTitle
+	10 {
+		wrap = <h1 class="pageHeadline">|</h1>
+	}
+}
+[global]

@@ -1,0 +1,21 @@
+// ---------------------------------------------------
+// Render code for default-head section
+// ---------------------------------------------------
+
+lib.head = COA
+lib.head {
+
+	#10 reserved for prepended stuff
+	15 = TEXT
+	15.value (
+		<meta name="viewport" content="width=device-width">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	)
+	20 < lib.seo.title
+	40 < lib.css
+	45 < lib.scripts
+	50 < lib.favicon
+	60 < lib.feeds
+
+	#100 reserved for append stuff
+}

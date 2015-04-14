@@ -1,0 +1,37 @@
+// ---------------------------------------------------
+// Basic configuration for level-based navigations
+// ---------------------------------------------------
+
+
+lib.nav.breadcrumb = HMENU
+lib.nav.breadcrumb {
+ 	special = rootline
+	special.range = 0 | -1
+	entryLevel = 0
+	wrap =  <div class="breadcrumb center"><h2 class="visuallyhidden">Brotkrümel-Navigation</h2><ul>|</ul></div>
+	1 = TMENU
+	1 {
+		NO = 1
+		CUR = 1
+		noBlur = 1
+		
+		NO {
+			wrapItemAndSub = <li class="BG-lightAccentAlt3">|</li>
+			ATagParams.cObject = TEXT
+			ATagParams.cObject{
+				field = tx_masterconfig_css_class
+				wrap = class = "|"
+			} 
+			ATagBeforeWrap = 1
+			linkWrap = |
+		}
+		
+		CUR < .NO
+		CUR {
+			wrapItemAndSub = <li class="BG-lightAccent">|</li>
+			doNotLinkIt = 1
+			linkWrap = <strong>|</strong>
+			
+		}
+	}
+}

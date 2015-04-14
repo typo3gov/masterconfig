@@ -1,0 +1,23 @@
+// ---------------------------------------------------
+// Render code for inclusion of (rss) feeds
+// ---------------------------------------------------
+
+lib.favicon = COA
+lib.favicon {
+	10 = COA
+	10 {
+		10 = COA
+		10 {
+			10 = TEXT
+			10 {
+				dataWrap = <link rel="shortcut icon" href="{$portal.favicon.filename}" type="image/ico" />
+			}
+		}
+		stdWrap {
+			if {
+				value = {$portal.favicon.enable}
+				equals = 1
+			}
+		}
+	}
+}

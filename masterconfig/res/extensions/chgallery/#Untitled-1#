@@ -1,0 +1,28 @@
+plugin.tx_chgallery_pi1 {
+	pathToCSS >
+	templateFile = EXT:localconfig/res/templates/extensions/chgallery/index.html
+	gallery.image {
+		file {
+			maxW = 120
+			maxH = 120
+		}
+		imageLinkWrap  = 1
+		imageLinkWrap {
+			enable = 1
+			typolink {
+				title.field= tx_chgalleryTitle
+				parameter.override.cObject = IMG_RESOURCE
+				parameter.override.cObject.file.import.data = TSFE:lastImageInfo|origFile
+				parameter.override.cObject.file.maxW = 800
+				parameter.override.cObject.file.maxH = 600
+				# used lightbox is pmkslimbox
+				ATagParams = rel="lightbox"
+				ATagParams.override = rel="lightbox[sb{field:uid}]"
+				ATagParams.insertData = 1
+			}
+		}
+	}
+
+}
+
+plugin.tx_chgallery_pi1.single.image < plugin.tx_chgallery_pi1.gallery.image

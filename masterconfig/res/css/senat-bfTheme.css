@@ -1,0 +1,242 @@
+/* Diese Datei überschreibt BLE-Farben des master-ble mit den Farben des BMEL
+   und macht so aus dem master-ble einen master-bmele ;-)
+   Wird durch Anhängen von folgendem Parameter an eine beliebige master-ble-URL aktiviert:
+   ?style=1
+*/
+
+/* =========================================================================
+   = BMEL - FARBANPASSUNGEN                                                =
+   =========================================================================
+
+   BMEL-Streifen (Seitenkopf) 
+   ========================================================================= */
+
+html {
+	border-top: none; /* BMEL-orange */
+	padding-top: 0px;
+}
+body {
+	border-top-color: #C8C8C8; /* FLI-grau */
+}
+
+/* Allgemeine Farben und Hintergründe
+   ========================================================================= */
+
+/* selected text's background */
+::-moz-selection {
+	color: #fff;
+	background-color: rgba(0,72,125,0.75); /* FLI-blau (dunkel) */
+	text-shadow: none;
+}
+
+::selection {
+	color: #fff;
+	background-color: rgba0,72,125,0.75); /* FLI-blau (dunkel) */
+	text-shadow: none;
+}
+a {
+	color: #C8C8C8; /* FLI-grau */
+}
+a:before,
+.inPageNavigation .icon-Icon_InternerTextlink:before,
+.linkList .icon-Icon_InternerTextlink:before,
+.linkList .icon-Icon_ExternerTextlink:before {
+	color: #00487D; /*  FLI-blau (dunkel) */
+}
+.icon-Icon_bersichtsseite:before {
+	color: #000;
+}
+.breadcrumb .icon-Icon_Startseite:before {
+	color: #fff;
+}
+.BG-darkAccent {
+	/* background-color: #6691B1; FLI-blau */
+	/* background-color: #C8C8C8; FLI-grau*/
+	background-color: #00487D; /*  FLI-blau (dunkel)*/
+}
+.BG-lightAccentAlt3 {
+	background-color: #C8C8C8; /* FLI-grau */
+}
+.BG-button,
+.BG-lightAccentAlt1,
+.downloadList .moduleButton {
+	/* background-color: #00487D; FLI-blau (dunkel) */
+	background-color: #6691B1; /*FLI-blau */
+	color: #fff;
+}
+.teaser.calendar .date p a .day,
+.teaser.calendar .date p a .month {
+	color: #fff;
+}
+.BG-button:before,
+.BG-lightAccentAlt1:before {
+	color: #000;
+}
+.downloadList .moduleButton:before {
+	/*background-color: #00487D;   FLI-blau (dunkel) */
+	background-color: #6691B1; /*FLI-blau */	
+	color: #fff;
+}
+
+/* Boxes
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+[class$="Box"] {
+	background-image: url(../img/layout/bgInfoBox.png);
+}
+.successBox {
+	background-image: url(../img/layout/bgSuccessBox.png);
+}
+
+
+/* Spezielle Farben
+   ========================================================================= */
+
+/* Hauptnavigation
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.mainNav .navLevel2 a {
+    background-color: #fff;
+}
+
+/* Nav ab 3. Ebene (Linke Spalte)
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.subNav .navLevel3 a:active,
+.subNav .navLevel3 a:focus,
+.subNav .navLevel3 a:hover {
+	background-color: #C4C8CD;
+}
+.subNav ul li.navLevel3 strong {
+	background-color: #fff;
+	font-weight: bold;
+	border-bottom-color: #C4C8CD;
+}
+.subNav ul li.navLevel3 a,
+.subNav ul li.navLevel3 strong {
+	border-bottom-color: #C4C8CD;
+}
+.subNav .navLevel3 strong:after {
+	display: none;
+}
+.subNav .navLevel4 a:active,
+.subNav .navLevel4 a:focus,
+.subNav .navLevel4 a:hover {
+	background-color: #fff;
+	text-decoration: underline;
+}
+
+/* Bühne Startseite 
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.home .promotion {
+	/* background-color: rgba(94,94,125,0.75); */
+	/* background-color: rgba(133,188,34,0.75); Farbangabe von FLI grün */
+	background-color: rgba(133,177,62,0.75); /* FLI-grün */
+}
+
+/* Breadcrumb Navigation
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.breadcrumb a {
+  color: #fff;
+	background-color: #C8C8C8; /* FLI-grau */
+}
+
+.subNav .navLevel4 a {
+	background-color: #fff;
+}
+
+/* Zwischenüberschriften in Artikeln
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+caption,
+.news-text-wrap h3,
+body .defaultContribution h3,
+body .defaultContribution h4,
+body .newsDate h3,
+body .newsDate h4 {
+	color: #000;
+}
+.teaser .date {
+    color: #00487D; /*  FLI-blau (dunkel) */
+}
+
+/* Footer
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+body > footer {
+  background-color: #00487D; /*  FLI-blau (dunkel) */
+}
+.controlElements {
+	border-bottom: 4px solid #C8C8C8; /* FLI-grau */
+}
+.controlElements a:before {
+	color: #000;
+}
+
+
+
+
+/* Forms
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+[name="submit"],
+.module .csc-mailform-submit {
+	background-color: #6691B1; /*  FLI-blau */
+	border-color: #00487D; /*  FLI-blau (dunkel) */
+	color: #fff;
+}
+
+/* RMS  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+html #rms.formHeader ul li.current span:before {
+    border: 1px solid #00487D; /*  FLI-blau (dunkel) */
+}
+html #rms .formHeader ul li span,
+html .formHeader ul li span:before,
+html .formHeader ul li.current span,
+html .formHeader ul li.current span:before {
+    color: #00487D; /*  FLI-blau (dunkel) */
+}
+html #rms .formHeader ul li.current span:before {
+    border-color: #00487D; /*  FLI-blau (dunkel) */
+}
+#rms .formHeader ul li.current span:before {
+    border: 1px solid #00487D; /*  FLI-blau (dunkel) */
+}
+html div#rms input[type="submit"] {
+	background-color: #6691B1; /*  FLI-blau */
+	border-color: #00487D; /*  FLI-blau (dunkel) */
+	color: #fff;
+}
+.antworten:before,
+.antworten:after,
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.antworten:after,
+.clearfix:after {
+    clear: both;
+}
+.antworten,
+.clearfix {
+    *zoom: 1;
+}
+
+/* =========================================================================
+   = BMEL - ANPASSUNGEN  (AUßER FARBE)                                     =
+   ========================================================================= */
+
+.mainNav ul.navLevel2 {
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+.mainNav ul.navLevel2 > li:first-child,
+.mainNav ul.navLevel2 > li:first-child a {
+  border-radius: 8px 8px 0 0;
+  background-clip: padding-box;
+}
+.mainNav ul.navLevel2 > li:last-child,
+.mainNav ul.navLevel2 > li:last-child a {
+  border-radius: 0 0 8px 8px;
+  background-clip: padding-box;
+}

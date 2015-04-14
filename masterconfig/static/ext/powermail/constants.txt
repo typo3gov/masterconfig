@@ -1,0 +1,13 @@
+plugin.tx_powermail {
+	view {
+		templateRootPath = EXT:masterconfig/res/extensions/powermail/Templates/
+	}
+	settings {
+		receiver {
+			enable = 1
+			overwrite {
+				name = Stefan Kappes
+			}
+		}
+	}
+}

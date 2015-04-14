@@ -1,0 +1,176 @@
+/ ----------------------------------------------
+/ User TSconfig (Redakteure)
+/ all TSconfig properties can be overwritten by page.xxx
+/ ----------------------------------------------
+
+/ ----------------------------------------------
+/ OPTIONS
+/ ----------------------------------------------
+
+	/ ----------------------------------------------
+	/ Options.RTE -> rteconfig.txt
+	/ ----------------------------------------------
+	/ options.RTEkeyList = cut,copy,paste,formatblock,fontstyle,bold,italic,underline,left,center,right,orderedlist,unorderedlist,outdent,indent,definitionlist,
+	/ line,link,table,toggleborders,chMode,tableproperties,rowproperties, rowinsertabove, / rowinsertunder, rowdelete, rowsplit,columninsertbefore,
+	/ columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge
+
+options.RTEkeyList=left,center,right,cut,copy,paste,formatblock,fontstyle,textstyle,bold,italic,subscript,orderedlist,unorderedlist,definitionlist,blockstyle,outdent,indent,line,link,user,undo,redo,chMode,toggleborders,table,tableproperties,rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit,columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge,textstylelabel,  blockstylelabel, underline, insertcharacter,  removeformat,  justifyfull
+
+
+
+options {
+	clearCache.pages = 1
+	clearCache.all = 0
+
+	saveClipboard = 1
+	clipboardNumberPads = 1
+									/ If set, the shortcut/bookmarks toolbox appears.
+	shortcutFrame = 1
+
+									/ If set, the page tree is not opened to the page being edited when an id number is entered in the search box 
+	#shortcut_onEditId_dontSetPageTree = 1
+
+									/If set, the page tree is not opened to the page being edited when an id number is entered in the search box
+	shortcut_onEditId_keepExistingExpanded = 1
+
+									/ If set, a createFolders option appears in the element browser (for admin-users this is always enabled).
+	createFoldersInEB = 1
+	noThumbsInEB = 0
+	uploadFieldsInTopOfEB = 1
+
+	pageTree.showPageIdWithTitle = 1
+
+									/ If set, the page/folder-icons in the page/folder tree will not activate the clickmenu.
+									/ If the value is set �titlelink� then the icon will instead be wrapped with the same link as the title.
+	#pageTree.disableIconLinkToContextmenu = titlelink
+	#folderTree.disableIconLinkToContextmenu = titlelink
+
+									/ If set, the icons in the clickmenu appear to the left instead of right
+	contextMenu.options.leftIcons = 1
+}
+
+/ ----------------------------------------------
+/ mod  Overriding values for the backend modules. Deprecated. Use page.mod instead!
+/ ----------------------------------------------
+
+page.mod.web_layout{
+									/If set, the link in the bottom of the page, "Create new record", is hidden.
+									/User can create new Pages only via the context menu in the pagetree
+
+		noCreateRecordsLink = 0
+		disableNewContentElementWizard = 0
+		disableBigButtons = 0
+		disablePageInformation = 1
+}
+
+page.mod.web_list{
+									/If set, the link in the bottom of the page, "Create new record", is hidden.
+		noCreateRecordsLink = 0
+		alternateBgColors = 1
+
+}
+
+/ ----------------------------------------------
+/ setup.defaults (Setzen der Voreinstellugen fuer das User->Setup)
+/ Default values and overriding values for the User > Setup module.
+/ Aufbau des Backendes: USER->SETTINGS (T3_V4.1)
+/ ----------------------------------------------
+
+setup.default {
+			/ -- BACKENDSPRACHE --:
+	lang = de
+			/ -- BEIM START --
+	condensedMode = 0
+	noMenuMode = 0
+	startInTaskCenter = 0
+	thumbnailsByDefault = 1
+	helpText = 1
+	/ -- Length of displayed page title or file name
+        titleLen = 120
+
+			/ -- ERWEITERTE FUNKTIONEN --
+	copyLevels = 99
+	recursiveDelete = 1
+
+			/ --BEARBEITEN--
+	edit_wideDocument = 1
+	edit_RTE = 1
+	edit_docModuleUpload = 0
+	edit_showFieldHelp = 1
+	disableCMlayers = 0
+
+			/ --PERSOENLICHE DATEN--
+	emailMeAtLogin = 0
+}
+
+/ ----------------------------------------------
+/ weitere Defaulteinstellungen, die nicht im USER->SETTINGS zur Verfuegung stehen
+/ ----------------------------------------------
+
+setup.default{
+	disableTabInTextarea = 0
+
+	#navFrameWidth = 300
+	#navFrameResizable =1
+
+	/Display all save functions in Doc-module menu
+	allSaveFunctions = 0
+	neverHideAtCopy = 0
+	classicPageEditMode = 1
+	hideSubmoduleIcons = 0
+	dontShowPalettesOnFocusInAB = 0
+	disableTabInTextarea = 0
+}
+
+/ ----------------------------------------------
+/ setup.override User->Setup = Benutzer-> Einstellungen (Der User kann diese Werte nicht �ndern) )
+/ auskommentieren wenn User die Werte �ndern sollen kann.
+/ ----------------------------------------------
+
+setup.override{
+	/ -- BACKENDSPRACHE --:
+	/lang : laesst sich nicht festlegen
+
+	/ -- BEIM START --
+	condensedMode = 0
+	noMenuMode = 0
+	startInTaskCenter = 0
+	thumbnailsByDefault = 1
+	helpText = 1
+
+	/ --BEARBEITEN--
+	edit_wideDocument = 1
+	edit_RTE = 1
+	edit_docModuleUpload = 0
+	edit_showFieldHelp = 1
+	disableCMlayers = 0
+
+	/ --PERS�NLICHE DATEN--
+	#emailMeAtLogin = 0
+}
+
+/ ----------------------------------------------
+/ TCA
+/ ----------------------------------------------
+
+/ -- Page Type always advanced
+
+TCAdefaults.pages {
+	hidden=0
+	doktype=1
+}
+
+/ -- immer sichtbar
+TCAdefaults.tt_content {
+	hidden = 0
+	header =
+	bodytext =
+}
+
+/ -- tt_news immer sichtbar
+
+TCAdefaults.tt_news {
+	hidden=0
+}
+
+TCAdefaults.tt_content.imagecols = 3

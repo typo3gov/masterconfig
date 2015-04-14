@@ -1,0 +1,48 @@
+/ ----------------------------------------------
+/ UserTSConfig for BE-group SYSADMINS
+/ <INCLUDE_TYPOSCRIPT: source="FILE: fileadmin/MASTERCONFIG/ts/usertsconfig_SYSADMINS.txt">
+/ ----------------------------------------------
+
+#options.RTEkeyList=left,center,right,cut,copy,paste,formatblock,fontstyle,textstyle,bold,italic,subscript,orderedlist,unorderedlist,definitionlist,blockstyle,outdent,indent,line,link,user,undo,redo,chMode,toggleborders,table,tableproperties,rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit,columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge,textstylelabel,  blockstylelabel, underline, insertcharacter,  removeformat,  justifyfull
+
+
+/ ----------------------------------------------
+/ AdmPanel
+/ ----------------------------------------------
+
+admPanel {
+	hide = 0
+	enable.all = 0
+	enable.preview = 1
+	override.preview.showHiddenRecords = 1
+	override.preview.showHiddenPages = 1
+	override.preview.simulateDate = 1
+	override.preview.simulateUserGroup = 1
+
+	enable.cache = 1
+	override.cache.noCache = 0
+	override.cache.clearCacheLevels = 2
+
+	enable.publish = 1
+	override.publish.publish_levels = 0
+
+	enable.edit = 0
+	module.edit.forceNoPopup = 1
+	module.edit.forceDisplayFieldIcons = 0
+	module.edit.forceDisplayIcons = 0
+	override.edit.displayFieldIcons = 0
+	override.edit.displayIcons = 1
+	override.edit.editNoPopup = 1
+	override.edit.editFormsOnPage = 1
+
+	enable.tsdebug = 1
+	override.tsdebug.tsdebug_tree = 1
+	override.tsdebug.displayTimes = 1
+	override.tsdebug.displayMessages = 1
+	override.tsdebug.LR = 1
+	override.tsdebug.displayContent = 1
+	override.tsdebug.displayQueries = 1
+	override.tsdebug.forceTemplateParsing = 1
+
+	enable.info = 1
+}

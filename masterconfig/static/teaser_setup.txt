@@ -1,0 +1,35 @@
+// ---------------------------------------------------
+// Fill teaser slot
+// ---------------------------------------------------
+lib.teaser = COA
+lib.teaser {
+	10 = TEXT
+	10 {
+		field = title
+		wrap = <h2>|</h2>
+	}
+	20 = TEXT
+	20 {
+		field = abstract
+		#htmlSpecialChars = 1
+		parseFunc < tt_content.text.20.parseFunc
+		#parseFunc =< lib.parseFunc_RTE
+	}
+	30 = IMAGE
+	30 {
+		file {
+			import {
+				field = media
+				wrap = uploads/media/ |
+				required = 1
+			}
+			maxW = 225m
+			#maxH = 207m
+		}
+	}
+	30 >
+	stdWrap {
+		wrap = <div class="teaser"><!--TYPO3SEARCH_begin-->|<!--TYPO3SEARCH_end--></div>
+		if.isFalse.field = tx_masterconfig_teaserswitch
+	}
+}

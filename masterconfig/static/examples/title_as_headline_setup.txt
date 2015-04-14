@@ -1,0 +1,23 @@
+// ---------------------------------------------------
+// Insert page title as h1
+// ---------------------------------------------------
+lib.component.document.title_as_headline = COA
+lib.component.document.title_as_headline {
+	10 = TEXT
+	10 {
+		field = title
+		wrap = <h1 class="document-title">|</h1>
+	}
+}
+
+// ---------------------------------------------------
+// Insert page subtitle as h2
+// ---------------------------------------------------
+lib.component.document.subtitle_as_headline = COA
+lib.component.document.subtitle_as_headline {
+	10 = TEXT
+	10 {
+		field = subtitle
+		wrap = <h2 class="document-subtitle">|</h2>
+	}
+}

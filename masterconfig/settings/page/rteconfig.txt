@@ -1,0 +1,448 @@
+HTMLAreaPluginList = TableOperations, SpellChecker, ContextMenu, SelectColor, TYPO3Browsers, InsertSmiley, FindReplace, RemoveFormat, CharacterMap, QuickTag, InlineCSS, DynamicCSS, UserElements, Acronym, TYPO3HtmlParser
+
+// unnoetigen Quelltext durch RTE entfernen
+// no class="bodytext" for every P
+# lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes >
+lib.parseFunc_RTE.nonTypo3TagStdWrap.encapsLines.addAttributes.P.class >
+
+lib.parseFunc_RTE.nonTypo3TagStdWrap.encapsLines.innerStdWrap_all.ifEmpty >
+#lib.parseFunc_RTE.externalBlocks.blockquote.callRecursive.tagStdWrap.HTMLparser.tags.blockquote.overrideAttribs >
+/ -------------------------------------------------------
+/ RTE.default
+/ konfiguriert den RTE fuer
+/ Tabellen, Felder, Typen, also auch in den Extensions
+/ -------------------------------------------------------
+/ einbinden des CSS, damit die Inhalte im RTE so angezeigt werden, wie auf der Website
+#*** RTE Classe des Interface (Ausrichtung)
+RTE.classes {
+        align-left {
+                name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifyleft
+                value = text-align: left;
+        }
+        align-center {
+                name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifycenter
+                value = text-align: center;
+        }
+        align-right {
+                name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifyright
+                value = text-align: right;
+        }
+}
+#
+# *** Entfernt das Bild vor den Links
+RTE.classesAnchor {
+	internalLink {
+		class = icon-Icon_InternerLink button BG-button
+		type = page
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_titleText
+	}
+	internalLinkNews {
+		class = buttonBig BG-lightAccentAlt2 icon-Icon_bersichtsseite
+		type = page
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_titleText
+	}
+
+	internalTextLink {
+		class = icon-Icon_InternerTextlink
+		type = page
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_titleText
+	}
+	internalLinkInNewWindow >
+	#internalLinkInNewWindow {
+	#	class = internal-link-new-window
+	#	type = page
+	#	image >
+	#	altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_new_window_altText
+	#	titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:internal_link_new_window_titleText
+	#}
+	externalLink {
+		class = buttonBig BG-lightAccentAlt1 icon-Icon_ExternerLink
+		type = url
+		image >
+		altText =  LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_new_window_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_titleText
+	}
+	externalTextLink {
+		class = icon-Icon_ExternerTextlink
+		type = url
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_altText
+		titleText = Öffnet externen Link im neuen Fenster
+		#LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_titleText
+	}
+	externalLinkInNewWindow >
+	#externalLinkInNewWindow {
+	#	class = external-link-new-window
+	#	type = url
+	#	image >
+	#	altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_new_window_altText
+	#	titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_new_window_titleText
+	#}
+	download {
+		class = moduleButton BG-button icon-Fallback
+		type = file
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_titleText
+	}
+
+	pdf {
+		class = moduleButton BG-button icon-Icon_Pdf-Download02	
+		type = file
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_titleText
+	}
+
+	word {
+		class = moduleButton BG-button icon-Word		
+		type = file
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_titleText
+	}
+
+	excel {
+		class = moduleButton BG-button icon-Exel
+		type = file
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_titleText
+	}
+
+	zip {
+		class = moduleButton BG-button icon-Zip
+		type = file
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_titleText
+	}	
+
+	powerpoint {
+		class = moduleButton BG-button icon-PowerPoint
+		type = file
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:download_titleText
+	}
+	
+	mail {
+		class = buttonBig BG-lightAccentAlt1 icon-Icon_ExternerLink
+		type = mail
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:buttonBig BG-lightAccentAlt1 symbols_Icon_ExternerLink_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:buttonBig BG-lightAccentAlt1 symbols_Icon_ExternerLink_titleText
+	}
+
+	mailKlein {
+		class = icon-Icon_ExternerTextlink
+		type = mail
+		image >
+		altText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_altText
+		titleText = LLL:EXT:rtehtmlarea/res/accessibilityicons/locallang.xml:external_link_titleText
+	}
+}
+
+### Set default class for ul from rte
+lib.parseFunc_RTE {
+	allowTags := addToList(object,param,embed,iframe)
+	externalBlocks := addToList(ul,li)
+	externalBlocks {
+		ul.stripNL = 1
+		ul.callRecursive = 1
+		ul.callRecursive.tagStdWrap.HTMLparser = 1
+		ul.callRecursive.tagStdWrap.HTMLparser.tags.ul {
+			fixAttrib.class.default = contentList
+		}
+	}
+}
+
+## RTE Konfiguration
+RTE.default {
+
+	# Zuweisung der CSS-Datei
+	contentCSS = typo3conf/ext/masterconfig/res/css/rte.css
+
+	## Markup options
+	enableWordClean = 1
+	removeTrailingBR = 1
+	removeComments = 1
+	removeTags = center, sdfield
+	removeTagsAndContents = style,script
+
+	# Buttons die gezeigt/versteckt werden
+	showButtons = textstyle, textstylelabel, blockstyle, blockstylelabel, bold, italic, underline,lefttoright, righttoleft, left, center, right, formatblock, orderedlist, unorderedlist, outdent, indent, insertcharacter, link, image, removeformat, table, justifyfull,undo, redo, user, chMode, copy, cut, paste, toggleborders, tableproperties, rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit, columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge
+	hideButtons = fontstyle, fontsize, strikethrough, textcolor, bgcolor, textindicator, emoticon, spellcheck, line, inserttag,  subscript, superscript, acronym, findreplace, showhelp, about
+
+	toolbarOrder (
+		bold, italic, orderedlist, unorderedlist, definitionlist,outdent, indent, bar, blockstyle, bar, justifyfull, space, left, center, right, lefttoright, righttoleft, bar, textstyle, space, bar, space, undo, redo, bar, space, insertcharacter, linebreak, space, bar, space, link, bar, table, formatblock, chMode, bar, removeformat, bar, user, toggleborders, tableproperties, rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit, columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge
+	)
+
+	buttons.blockstyle.tags.p.allowedClasses (
+		align-left, align-center, align-right, align-justify, justifyfull
+	)
+	buttons.blockstyle.tags.table.allowedClasses = smallTable,bigTable
+	buttons.blockstyle.tags.td.allowedClasses = firstColumn,secondColumn
+	buttons.blockstyle.tags.th.allowedClasses = lastgroup,bottomRow,group,tableHead,mainheader
+	buttons.textstyle.tags.span.allowedClasses = visuallyhidden
+	buttons.textstyle.tags.ul.allowedClasses = downloadList, clearfix
+	buttons.textstyle.tags.ol.allowedClasses = altCounter, clearfix
+	buttons.textstyle.tags.li.allowedClasses = level1, level2, level3, level4
+
+	
+
+	classesH3 := addToList(normal, moduleHeader)
+	classesH2 := addToList(normal, moduleHeader)
+	proc.allowedClasses := addToList(moduleHeader)
+	buttons.formatblock.removeItems = h1,article,p,address,div,section,footer,header,nav,aside,pre,blockquote
+	buttons.formatblock.addItems = h5,h6,h7,h8,h9,h10,h11
+	buttons.formatblock.orderItems = h2, h7, h3, h8, h4, h9, h5, h10, h6, h11
+
+	buttons.formatblock.items {
+		h7.label = Überschrift 2 mit Großbuchstaben
+		h7.tagName = h2
+		h7.addClass = moduleHeader
+		h8.label = Überschrift 3 mit Großbuchstaben
+		h8.tagName = h3
+		h8.addClass = moduleHeader
+		h9.label = Überschrift 4 mit Großbuchstaben
+		h9.tagName = h4
+		h9.addClass = moduleHeader
+		h10.label = Überschrift 5 mit Großbuchstaben
+		h10.tagName = h5
+		h10.addClass = moduleHeader
+		h11.label = Überschrift 6 mit Großbuchstaben
+		h11.tagName = h6
+		h11.addClass = moduleHeader
+	}
+
+	## Configuration of links
+	## These classes should also be in the list proc.allowedClasses
+	#buttons.link.properties.class.allowedClasses = external-link, external-link-new-window, internal-link, internal-link-new-window, download, mail
+	buttons.link.properties.class.allowedClasses = icon-Icon_InternerTextlink, icon-Icon_ExternerTextlink, buttonBig BG-lightAccentAlt1 icon-Icon_ExternerLink, buttonBig BG-lightAccentAlt2 icon-Icon_bersichtsseite,  icon-Icon_InternerLink button BG-button,  moduleButton BG-button, buttonBig BG-lightAccentAlt1 icon-Icon_ExternerLink, moduleButton BG-button icon-PowerPoint,moduleButton BG-button icon-Zip,moduleButton BG-button icon-Exel,moduleButton BG-button icon-Word,moduleButton BG-button icon-Icon_Pdf-Download02,moduleButton BG-button icon-Fallback
+	### internal Link ###
+	buttons.link.page.properties.class.default = icon-Icon_InternerTextlink
+
+
+	### external Link ###
+	buttons.link.url.properties.class.default = icon-Icon_ExternerTextlink
+	### download Link ###
+	buttons.link.file.properties.class.default = moduleButton BG-button icon-Fallback
+	### email Link ###
+	buttons.link.mail.properties.class.default = icon-Icon_ExternerTextlink
+
+	# Hält die RTE Icons gegroupt zusammen
+	keepButtonGroupTogether = 1
+
+	# blendet Statusbar in htmlarea aus
+	showStatusBar =  1
+
+	## Add styles Left, center and right alignment of text in paragraphs and cells.
+	inlineStyle.text-alignment (
+		p.align-left, h2.moduleHeader, h3.moduleHeader, h1.align-left, h2.align-left, h3.align-left, h4.align-left, h5.align-left, h6.align-left, td.align-left { text-align: left; }
+		p.align-center, h1.align-center, h2.align-center, h3.align-center, h4.align-center, h5.align-center, h6.align-center, td.align-center { text-align: center; }
+		p.align-right, h1.align-right, h2.align-right, h3.align-right, h4.align-right, h5.align-right, h6.align-right, td.align-right { text-align: right; }
+	)
+
+	## Use stylesheet file rather than the above mainStyleOverride and inlineStyle properties to style the contents (htmlArea RTE only)
+	ignoreMainStyleOverride = 1
+
+	proc {
+		# tags die erlaubt / verboten sind
+		allowTags = table, tbody, thead, tfoot, tr, th, td, h1, h2, h3, h4, h5, h6, div, p, br, span, ul, ol, li, re, blockquote, strong, em, b, i, u, sub, sup, strike, a, img, nobr, hr, tt, q, cite, abbr, acronym, center, object, param, embed, iframe
+		denyTags = font
+
+		# br wird nicht zu p konvertiert
+		dontConvBRtoParagraph = 1
+
+		# tags sind erlaubt außerhalb von p, div
+		allowTagsOutside = img, hr, blockquote, object, embed, iframe
+
+		# erlaubte attribute in p, div tags
+		keepPDIVattribs = align,class,id
+
+		# List all class selectors that are allowed on the way to the database
+		allowedClasses (
+			buttonBig BG-lightAccentAlt1 icon-Icon_ExternerLink,
+			buttonBig BG-lightAccentAlt2 icon-Icon_bersichtsseite,
+			external-link-new-window,
+			icon-Icon_ExternerTextlink,
+			icon-Icon_InternerTextlink,
+			icon-Icon_InternerLink button BG-button,
+			internal-link-new-window,
+			moduleButton BG-button,
+			moduleButton BG-button icon-PowerPoint,
+			moduleButton BG-button icon-Zip,
+			moduleButton BG-button icon-Exel,
+			moduleButton BG-button icon-Word,
+			moduleButton BG-button icon-Icon_Pdf-Download02,
+			moduleButton BG-button icon-Fallback,
+			buttonBig BG-lightAccentAlt1 icon-Icon_ExternerLink,
+			align-left,
+			align-center,
+			align-right,
+			visuallyhidden,
+			clearfix,
+			downloadList,
+			altCounter,
+			boxOneThirdLeft,
+			boxOneThirdRight,
+			moduleHeader,
+			level1, 
+			level2, 
+			level3,
+			level4
+		)
+
+		# html parser einstellungen
+		HTMLparser_rte {
+			# tags die erlaubt/verboten sind
+			#allowTags < RTE.default.proc.allowTags
+			#denyTags < RTE.default.proc.denyTags
+
+			# tags die untersagt sind
+			removeTags = font
+
+			# entfernt html-kommentare
+			removeComments = 1
+
+			# tags die nicht übereinstimmen werden nicht entfernt (protect / 1 / 0)
+			keepNonMatchedTags = 0
+		}
+
+
+		# Content to database
+		entryHTMLparser_db = 1
+		entryHTMLparser_db {
+			# tags die erlaubt/verboten sind
+			#allowTags < RTE.default.proc.allowTags
+			allowTags < .allowTags
+			#denyTags < RTE.default.proc.denyTags
+			denyTags < .denyTags
+			
+			# CLEAN TAGS
+			noAttrib =  u, strike, sub, sup, quote, tt, br, center
+
+			rmTagIfNoAttrib = span,div,font
+
+			#removeTags = span
+
+			# htmlSpecialChars = 1
+
+			## align attribute werden erlaubt
+			tags {
+				p.fixAttrib.align.unset >
+				div.fixAttrib.align.unset >
+				p.allowedAttribs = class,align
+				blockquote.allowedAttribs = class
+				hr.allowedAttribs = class
+
+				span.fixAttrib.style.unset = 1
+				span.rmTagIfNoAttrib = 1
+
+				# b und i tags werden ersetzt (em / strong)
+				b.remap = strong
+				i.remap = em
+
+				## img tags werden erlaubt
+				img >
+			}
+		}
+
+	}
+
+	# Classes: Ausrichtung
+		classesParagraph (
+		align-left, align-center, align-right
+	)
+
+	# Classes: Eigene Stile
+	classesCharacter = author
+	classesImage = rte_image
+
+
+	# Classes für Links (These classes should also be in the list of allowedClasses)
+	classesAnchor = external-link, external-link-new-window, internal-link, internal-link-new-window, download, mail,moduleButton BG-button powerpoint,moduleButton BG-button zip,moduleButton BG-button excel,moduleButton BG-button word,moduleButton BG-button pdf,moduleButton BG-button fallback
+	classesAnchor.default {
+		page = internal-link
+		url = external-link-new-window
+		file = moduleButton BG-button fallback
+		mail = mail
+	}
+
+	# zeigt alle CSS-Klassen die in formate.css vorhanden sind
+	showTagFreeClasses = 1
+
+	# Do not allow insertion of the following tags
+	hideTags = font
+
+	# Tabellen Optionen in der RTE Toolbar
+	hideTableOperationsInToolbar = 0
+	keepToggleBordersInToolbar = 1
+
+	# Tabellen Editierungs-Optionen (cellspacing/ cellpadding / border)
+	disableSpacingFieldsetInTableOperations = 1
+	disableAlignmentFieldsetInTableOperations=1
+	disableColorFieldsetInTableOperations=1
+	disableLayoutFieldsetInTableOperations=1
+	disableBordersFieldsetInTableOperations=0
+}
+
+# Use same processing as on entry to database to clean content pasted into the editor
+RTE.default.enableWordClean.HTMLparser < RTE.default.proc.entryHTMLparser_db
+
+# FE RTE configuration (htmlArea RTE only)
+RTE.default.FE < RTE.default
+#RTE.default.FE.userElements >
+RTE.default.FE.userLinks >
+RTE.default.userElements {
+
+	10 = DownloadListe
+	10 {
+		1 = Download mit Titel
+		1.mode = normal
+		1.content = <ul class="downloadList clearfix"><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3></li></ul>
+
+		2 = Download mit Titel und Text
+		2.mode = normal
+		2.content = <ul class="downloadList clearfix"><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><h3>Überschrift</h3><p>beschreibender Text</p></li></ul>
+
+		3 = Download nur mit Text
+		3.mode = normal
+		3.content = <ul class="downloadList clearfix"><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><p>beschreibender Text</p></li><li><a href=""><span class="visuallyhidden">Dokument herunter laden</span></a><p>beschreibender Text</p></li></ul>
+	}
+	20 = Zitatbox
+	20 {
+		1 = Box links
+		1.mode = normal
+		1.content = <blockquote class="boxOneThirdLeft"><p>Zitat Zitat Zitat Zitat Zitat Zitat</p><p><cite>Autor: Max Mustermann</cite></p></blockquote>
+
+		2 = Box rechts
+		2.mode = normal
+		2.content = <blockquote class="boxOneThirdRight"><p>Zitat Zitat Zitat Zitat Zitat Zitat</p><p><cite>Autor: Max Mustermann</cite></p></blockquote>
+
+		3 = Box groß
+		3.mode = normal
+		3.content = <blockquote><p>Zitat Zitat Zitat Zitat Zitat Zitat</p><p><cite>Autor: Max Mustermann</cite></p></blockquote>
+	}
+	#30 = iFrame
+	#30 {
+	#	1 = Standard iFrame
+	#	1.mode = normal
+	#	1.content = <iframe src="http://www.ble.de"></iframe>
+	#}
+}
+
+# Breite des RTE in Fullscreen-Ansicht
+#TCEFORM.tt_content.bodytext.RTEfullScreenWidth= 80%
+
+
+RTE.default.proc.allowTags := addToList(iframe)
+RTE.default.proc.entryHTMLparser_db.allowTags := addToList(iframe
+RTE.default.proc.allowTagsOutside := addToList(iframe)

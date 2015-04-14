@@ -1,0 +1,23 @@
+// ---------------------------------------------------
+// Render code for inclusion of (rss) feeds
+// ---------------------------------------------------
+
+lib.feeds = COA
+lib.feeds {
+	10 = COA
+	10 {
+		10 = COA
+		10 {
+			10 = TEXT
+			10 {
+				dataWrap = <link rel="alternate" type="application/rss+xml" href="{$portal.templates.feed1.name}" title="{$portal.templates.feed1.title}" />
+			}
+		}
+		stdWrap {
+			if {
+				value = {$portal.templates.feed1.enable}
+				equals = 1
+			}
+		}
+	}
+}

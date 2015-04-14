@@ -1,0 +1,27 @@
+lib.searchbox = COA
+lib.searchbox {
+	10 = TEXT
+	10.value = <form method="get" action="/index.php" class="keywordSearch">
+	20 = TEXT
+	20.value = <label for="idKeywordSearchTop" class="visuallyhidden">{$portal.langlabels.search.srhint}</label>
+	30 = TEXT
+	30.value = <input type="search" placeholder="{$portal.langlabels.search.placeholder}" id="idKeywordSearchTop">
+	40 = TEXT
+	40.value (
+		<input type="button" value="{$portal.pid.search}" class="visuallyhidden"><span class="icon-Icon_Suchfunktion" aria-hidden="true"></span>
+		</form>
+	)
+	stdWrap {
+		#wrap = <div id="search">|</div>
+		if.isTrue = {$portal.searchbox.enable}
+	}
+}
+
+lib.searchbox >
+
+lib.searchbox = RECORDS
+lib.searchbox {
+	tables = tt_content
+	source = 703
+	
+}

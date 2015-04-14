@@ -1,0 +1,26 @@
+
+lib.selectedLayout = COA
+lib.selectedLayout {
+	10 = CASE
+	10 {
+		key.field = uid
+
+		2 = TEXT
+		2.value = start.html
+
+		default = TEXT
+		default.value = main_default.html
+
+	}
+}
+
+// ---------------------------------------------------
+// Configuration for template type main
+// ---------------------------------------------------
+lib.subparts = FLUIDTEMPLATE
+lib.subparts {
+	file = {$portal.templates.directory.html}index.html
+	partialRootPath = {$portal.templates.directory.html}partials/
+    layoutRootPath = {$portal.templates.directory.html}layouts/
+	variables.CONTENT < styles.content.get
+}

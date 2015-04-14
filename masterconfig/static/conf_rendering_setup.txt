@@ -1,0 +1,828 @@
+// ---------------------------------------------------
+// Finetuning of content rendering
+// ---------------------------------------------------
+
+#styles.content.imgtext.linkWrap {
+#	lightboxEnabled = 1
+#	lightboxCssClass = magnificpopup
+#	lightboxRelAttribute >
+#}
+
+#### hier werden Style-angaben im <blockquote> erlaubt
+lib.parseFunc_RTE.externalBlocks.blockquote.callRecursive.tagStdWrap.HTMLparser.tags.blockquote.overrideAttribs >
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes >
+tt_content {
+	image {
+		20.layout.default.value = ###IMAGES######TEXT###
+		20.rendering.singleCaption {
+			caption {
+				wrap = <figcaption class="BG-lightAccent"><p>|</p></figcaption>
+				wrap {
+					override = <figcaption><p>|</p></figcaption>
+				}
+			}
+		}
+		20.1 {
+			layout.default.element = <img src="###SRC###" ###PARAMS######ALTPARAMS######BORDER######SELFCLOSINGTAGSLASH###>
+			#imageLinkWrap {
+			#	JSwindow = 0
+			#	directImageLink = 1
+			#	linkParams.ATagParams.dataWrap = class="magnificpopup"
+			#}
+		}
+	}
+
+	uploads.20 {
+		description_ifElementEmpty=###FILENAME###
+		layout {
+			global = <div class="innerWrap"><ul class="l###LAYOUT###">###FILE###</ul></div>
+			file >
+			file {
+				cObject = COA
+				cObject {
+					wrap = <li class="###CLASS###">|</li>
+					10 = TEXT
+					10.wrap= |
+					10.value (
+					<a href="###URL###"><strong>###DESCRIPTION###</strong>
+					<br />
+					###FILEEXT### | ###SIZE### ###SIZEFORMAT###</a>
+					)
+				}
+			}
+		}
+	}
+	textpic {
+		20.text.wrap = <div class="content">|</div>
+	}
+	##### gridelements ####
+	gridelements_pi1.20.10.setup {
+		##### 1-spaltig über die ganze Breite ####
+		# ID des gridelements
+		4 < lib.gridelements.defaultGridSetup
+		4 {
+		    columns {
+		      # colPos ID
+		      10 < .default
+		      10.wrap = <div class="colspan12">|</div>
+		    }
+		}
+
+		##### 2-spaltig, links klein, rechts gross ####
+		5 < lib.gridelements.defaultGridSetup
+		5 {
+		    columns {
+		      # colPos ID
+		      10 < .default
+		      10.wrap = <div class="colspan4">|</div>
+		      20 < .default
+		      20.wrap = <div class="colspan8">|</div>
+		    }
+		}
+
+		##### 2-spaltig, links gross, rechts klein ####
+		6 < lib.gridelements.defaultGridSetup
+		6 {
+		    columns {
+		      # colPos ID
+		      10 < .default
+		      10.wrap = <div class="colspan8">|</div>
+		      20 < .default
+		      20.wrap = <div class="colspan4">|</div>
+		    }
+		}
+
+		##### 3-spaltig ####
+		7 < lib.gridelements.defaultGridSetup
+		7 {
+		    columns {
+		      # colPos ID
+		      10 < .default
+		      10.wrap = <div class="colspan4">|</div>
+		      20 < .default
+		      20.wrap = <div class="colspan4">|</div>
+		      30 < .default
+		      30.wrap = <div class="colspan4">|</div>
+		    }
+		}
+    	##### Klammer für ähnliche Inhalte - erzeugt nur section ####
+		10 < lib.gridelements.defaultGridSetup
+		10 {
+		    columns {
+		      # colPos ID
+		      10 < .default
+		      10.wrap = <section class="container clearfix">|</section>
+		    }
+		}
+		##### Inhaltsbehälter - erzeugt nur article ####
+		11 < lib.gridelements.defaultGridSetup
+		11 {
+		    columns {
+		      # colPos ID
+		      10 < .default
+		      10.wrap = <article class="module defaultContribution clearfix">|</article>
+		    }
+		}
+
+		##### Inhaltsbehälter mit Abstand nach oben - erzeugt nur article ####
+		12 < lib.gridelements.defaultGridSetup
+		12 {
+		    columns {
+		      # colPos ID
+		      10 < .default
+		      10.wrap = <article class="module missingHeader defaultContribution clearfix">|</article>
+		    }
+		}
+	}
+}
+
+
+// ---------------------------------------------------
+// Remove css-styled-content default styles
+// ---------------------------------------------------
+
+plugin.tx_cssstyledcontent._CSS_DEFAULT_STYLE >
+
+
+// ---------------------------------------------------
+// Define outer wraps for content elements depending on column, content-type etc.
+// ---------------------------------------------------
+
+temp.customWrap < tt_content.stdWrap
+temp.customWrap {
+	prepend.dataWrap >
+	innerWrap >
+	innerWrap2 >
+	innerWrap = | <p class="toInPageNavigation"><a href="#" class="icon-Icon_InternerTextlink">{LLL:EXT:css_styled_content/pi1/locallang.xml:label.toTop}</a></p>
+	innerWrap.insertData = 1
+	innerWrap.fieldRequired = linkToTop
+
+
+	innerWrap2.cObject = CASE
+	innerWrap2.cObject {
+
+
+		default = CASE
+		default {
+			key.field = section_frame
+
+			#### Textbox mit grauem Hintergrund ####
+			110 = TEXT
+			110 {
+				value = <div id="c{field:uid}" class="module BG-lightAccent">|</div>
+				insertData = 1
+				override.cObject = TEXT
+				override.cObject {
+					value = <div id="c{field:_LOCALIZED_UID}" class="module BG-lightAccent">|</div>
+					insertData = 1
+					if.isTrue.field = _LOCALIZED_UID
+				}
+			}
+
+			#### Menübox ohne Abstand nach oben ####
+			115 < .110
+			115 {
+				value = <nav id="c{field:uid}" class="linkList subNav">|</nav>
+				override.cObject.value = <nav id="c{field:_LOCALIZED_UID}" class="linkList subNav">|</nav>
+			}
+
+			#### Menübox mit Abstand nach oben ####
+			116 < .110
+			116 {
+				value = <nav id="c{field:uid}" class="linkList subNav">|</nav>
+				override.cObject.value = <nav id="c{field:_LOCALIZED_UID}" class="linkList subNav">|</nav>
+			}
+
+
+			#### infobox ####
+			120 < .110
+			120 {
+				value >
+				value = <div id="c{field:uid}" class="module infoBox"><section class="content">|</section></div>
+				override.cObject.value = <div id="c{field:_LOCALIZED_UID}" class="module infoBox"><section class="content">|</section></div>
+				#innerWrap.cObject = TEXT
+				#innerWrap.cObject.value = <section class="content">|</section>
+			}
+
+			#### kontaktbox ####
+			125 < .110
+			125 {
+				value = <div id="c{field:uid}" class="contact module icon-Icon_Telefon BG-lightAccent">|</div>
+				override.cObject.value = <div id="c{field:_LOCALIZED_UID}" class="contact module icon-Icon_Telefon BG-lightAccent">|</div>
+			}
+
+			#### linkliste ####
+			130 < .110
+			130 {
+				value = <div id="c{field:uid}" class="bordered module linkList">|</div>
+				override.cObject.value = <div id="c{field:_LOCALIZED_UID}" class="bordered module linkList">|</div>
+			}
+			#### downloadliste ####
+			135 < .110
+			135 {
+				value = <div id="c{field:uid}" class="moduleDownload"><div class="BG-lightAccent">|</div></div>
+				override.cObject.value = <div id="c{field:_LOCALIZED_UID}" class="moduleDownload"><div class="BG-lightAccent">|</div></div>
+			}
+			#### flexbox ###
+			140 < .110
+			140 {
+				value = <article id="c{field:uid}" class="module textWithImage bordered">|</article>
+				override.cObject.value = <article id="c{field:_LOCALIZED_UID}" class="module textWithImage bordered">|</article>
+			}
+			#### Erfolgs-Box ####
+			145 < .110
+			145 {
+				value = <div id="c{field:uid}" class="module successBox"><section class="content">|</section></div>
+				override.cObject.value = <div id="c{field:_LOCALIZED_UID}" class="module successBox"><section class="content">|</section></div>
+
+			}
+			#### nur Bild ####
+			150 < .110
+			150 {
+				value = <div id="c{field:uid}" class="module imageOnly  BG-lightAccent">|</div>
+				override.cObject.value = <div id="c{field:_LOCALIZED_UID}" class="module imageOnly  BG-lightAccent">|</div>
+			}
+
+			##### Formular ####
+			170 < .110
+			170 {
+				value = <article id="c{field:uid}" class="module">|</article>
+				override.cObject.value = <article id="c{field:_LOCALIZED_UID}" class="module">|</article>
+			}
+
+			#### news-footerbox ###
+			180 < .110
+			180 {
+				value = <footer id="c{field:uid}" class="module borderedAlt1 fullWidth">|</footer>
+				override.cObject.value = <footer id="c{field:_LOCALIZED_UID}" class="module borderedAlt1 fullWidth">|</footer>
+			}
+			#### Inhalt breit ####
+			200 < .110
+			200 {
+				value = <div id="c{field:uid}" class="module teaser BG-lightAccent fullWidth"><div class="content">|</div></div>
+				override.cObject.value = <div id="c{field:_LOCALIZED_UID}" class="module teaser BG-lightAccent fullWidth"><div class="content">|</div></div>
+
+			}
+
+			/* ####Reserve####
+
+
+			170 < .110
+			170 {
+				value =
+				override.cObject.value =
+			}
+
+			210 < .110
+			210 {
+				value =
+				override.cObject.value =
+			}
+			*/
+			default = CASE
+			default {
+				key.field = CType
+
+				menu = CASE
+				menu {
+					key.field = menu_type
+					// example for custom menu-type
+					101 = TEXT
+					101 {
+						value = <section class="container teaserContainer" id="c{field:uid}">|</section>
+						insertData = 1
+						override.cObject = TEXT
+						override.cObject {
+							value = <section class="container" id="c{field:_LOCALIZED_UID}">|</section>
+							insertData = 1
+							if.isTrue.field = _LOCALIZED_UID
+						}
+					}
+					#### broschüren ####
+                    104 < .101
+                    104 {
+                    	value >
+                    	value = <article id="c{field:uid}" class="module bordered teaserBrochure clearfix">|</article>
+                    	override.cObject.value = <article id="c{field:_LOCALIZED_UID}" class="module bordered teaserBrochure clearfix">|</article>
+                    }
+
+				}
+
+				uploads = TEXT
+				uploads {
+					value = <div id="c{field:uid}" class="ceWrap downloadList">|</div>
+					insertData = 1
+					override.cObject = TEXT
+					override.cObject {
+						value = <div id="c{field:_LOCALIZED_UID}" class="ceWrap downloadList">|</div>
+						insertData = 1
+						if.isTrue.field = _LOCALIZED_UID
+					}
+				}
+
+
+				gridelements_pi1 = CASE
+				gridelements_pi1 {
+					key.field = tx_gridelements_backend_layout
+
+					10 = TEXT
+					10 {
+						value = |
+					}
+
+					11 = TEXT
+					11 {
+						value = |
+					}
+
+					12 = TEXT
+					12 {
+						value = |
+					}
+
+					default = TEXT
+					default {
+						value = <div class="row clearfix" id="c{field:uid}">|</div>
+						insertData = 1
+						override.cObject = TEXT
+						override.cObject {
+							value = <div id="c{field:_LOCALIZED_UID}" class="row clearfix">|</div>
+							insertData = 1
+							if.isTrue.field = _LOCALIZED_UID
+						}
+					}
+				}
+
+				header = TEXT
+				header {
+					value =
+					insertData = 1
+					/*
+					override.cObject = TEXT
+					override.cObject {
+						value = <header id="c{field:_LOCALIZED_UID}"><h2>|</h2></header>
+						insertData = 1
+						if.isTrue.field = _LOCALIZED_UID
+					}
+					*/
+				}
+
+				textpic = TEXT
+				textpic {
+					#value = <div id="c{field:uid}" class="module defaultContribution textWithImage clearfix">|</div>
+					value = <div id="c{field:uid}">|</div>
+					insertData = 1
+					override.cObject = TEXT
+					override.cObject {
+						#value = <div id="c{field:_LOCALIZED_UID} class="module defaultContribution textWithImage clearfix">|</div>
+						value = <div id="c{field:_LOCALIZED_UID}">|</div>
+						insertData = 1
+						if.isTrue.field = _LOCALIZED_UID
+					}
+				}
+
+				image < .textpic
+
+				list = CASE
+				list {
+					key.field = list_type
+
+					news_pi1 = TEXT
+					news_pi1 {
+						value = |
+					}
+					default {
+						value = |
+					}
+				}
+				mailform = TEXT
+				mailform {
+					value = <section id="c{field:_LOCALIZED_UID}" class="module">|</section>
+					insertData = 1
+					override.cObject = TEXT
+					override.cObject {
+						value = <section id="c{field:_LOCALIZED_UID}" class="module">|</section>
+						insertData = 1
+						if.isTrue.field = _LOCALIZED_UID
+					}
+				}
+				login < .mailform
+				
+				shortcut = TEXT
+				shortcut.value =				
+
+				default = TEXT
+				default {
+					#value = <div id="c{field:uid}" class="module teaserWithImage">|</div>
+					value = <div id="c{field:uid}">|</div>
+					insertData = 1
+					override.cObject = TEXT
+					override.cObject {
+						#value = <div id="c{field:_LOCALIZED_UID}" class="module teaserWithImage">|</div>
+						value = <div id="c{field:_LOCALIZED_UID}">|</div>
+						insertData = 1
+						if.isTrue.field = _LOCALIZED_UID
+					}
+				}
+
+			}
+		}
+	}
+}
+
+tt_content.stdWrap >
+tt_content.stdWrap < temp.customWrap
+
+// ---------------------------------------------------
+// Define custom inner wraps (headline excluded) for content elements
+// ---------------------------------------------------
+
+tt_content.text.20.stdWrap {
+	innerWrap.cObject = CASE
+	innerWrap.cObject {
+		key.field = section_frame
+		// Teaser-Element ohne wrap
+		//101 = TEXT
+		//101.value = |
+
+		// infobox-Element ohne wrap
+		120 = TEXT
+		120.value = |
+
+		// Erfgolgsbox-Element ohne wrap
+		145 = TEXT
+		145.value = |
+
+		// footer-Element ohne wrap
+		180 = TEXT
+		180.value = |
+
+		default = TEXT
+		default.value = <div class="content">|</div>
+	}
+}
+
+// Copy custom inner-wrap to all content element types
+#tt_content.image.20.stdWrap < tt_content.text.20.stdWrap
+
+tt_content.textpic.20.text.20 >
+tt_content.textpic.20.text.20 < tt_content.text.20
+tt_content.textpic.20.text.20.stdWrap.innerWrap >
+
+#tt_content.list.20.stdWrap < tt_content.text.20.stdWrap
+#tt_content.uploads.20.stdWrap < tt_content.text.20.stdWrap
+#tt_content.multimedia.20.stdWrap < tt_content.text.20.stdWrap
+#tt_content.table.20.stdWrap < tt_content.text.20.stdWrap
+#tt_content.login.20.stdWrap < tt_content.text.20.stdWrap
+#tt_content.menu.20.stdWrap < tt_content.text.20.stdWrap
+
+
+// ---------------------------------------------------
+// Define custom menu/sitemap variants
+// ---------------------------------------------------
+
+tt_content.menu.20 {
+	default {
+		#wrap >
+		#1.NO.allWrap >
+		#1.NO.wrapItemAndSub >
+		#1.NO.after.wrap >
+	}
+
+
+// ---------------------------------------------------
+//
+// ---------------------------------------------------
+
+	2 = HMENU
+	2 {
+		stdWrap < tt_content.menu.20.default.stdWrap
+		stdWrap {
+			outerWrap = <div class="csc-sitemap">|</div>
+		}
+		1 = TMENU
+		1 {
+			target < lib.parseTarget
+			target =
+			target.override = {$PAGE_TARGET}
+			expAll = 1
+			wrap = <ul class="contents">|</ul>
+			NO {
+				stdWrap.htmlSpecialChars = 1
+				wrapItemAndSub = <li>|</li>
+				ATagTitle.field = description // title
+			}
+		}
+		2 < .1
+		3 < .1
+		4 < .1
+		5 < .1
+		6 < .1
+		7 < .1
+	}
+
+// ---------------------------------------------------
+// Section Index
+// ---------------------------------------------------
+
+	3 {
+		1 {
+			sectionIndex.useColPos = -1
+			NO{
+                ATagParams = class="icon-Icon_InternerTextlink"
+            }
+		}
+		stdWrap.outerWrap = <ul class="inPageNavigation">|</ul>
+	}
+
+// ---------------------------------------------------
+// Artikelliste mit Bild und Teaser
+// ---------------------------------------------------
+
+	101 >
+	101 = COA
+	101 {
+		20 = HMENU
+		20 {
+			special = list
+			special.value.field = pages
+			1 = TMENU
+			1 {
+				NO = 1
+				NO {
+					doNotLinkIt = 1
+					stdWrap.cObject = COA
+					stdWrap.cObject {
+						10 = COA
+						10 {
+							10 = IMAGE
+							10 {
+								file {
+									import {
+										field = tx_masterconfig_teaserimage
+										wrap = uploads/media/ |
+										required = 1
+									}
+									maxW = 232m
+									#maxH = 232m
+									treatIdAsReference = 1
+								}
+								stdWrap {
+									typolink.parameter.field = uid
+									wrap = <figure>|</figure>
+									required = 1
+								}
+							}
+							20 = COA
+							20 {
+								10 = TEXT
+								10 {
+									field = lastUpdated
+									strftime = %d.%m.%Y
+									wrap = <span class="date">|</span>
+									#required = 1
+									if.isTrue.field = lastUpdated
+								}
+								20 = TEXT
+								20 {
+									field = title
+
+								}
+								stdWrap {
+									wrap = <h3>|</h3>
+								}
+							}
+							stdWrap {
+								wrap = <header>|</header>
+							}
+						}
+
+						30 = COA
+						30 {
+							10 = TEXT
+							10 {
+								field = abstract
+								stdWrap.parseFunc < tt_content.text.20.parseFunc
+							}
+							20 = TEXT
+							20 {
+								value = {$portal.langlabels.go2article}
+								typolink {
+									parameter.field = uid
+									ATagParams = class="buttonBig BG-lightAccentAlt1 icon-Icon_InternerLink"
+								}
+								wrap = <p>|</p>
+							}
+							stdWrap {
+								wrap = <div class="content">|</div>
+							}
+						}
+					}
+					stdWrap.wrap = <article class="module teaser BG-lightAccent fullWidth">|</article>
+				}
+			}
+		}
+	}
+
+
+// ---------------------------------------------------
+// Menü Links
+// ---------------------------------------------------
+
+	103 >
+	103 = COA
+	103 {
+		10 = HMENU
+		10 {
+			#special = directory
+			#special.value.field = pages
+			entryLevel = 2
+			wrap = |
+			1 = TMENU
+			1 {
+				target = {$PAGE_TARGET}
+				noBlur = 1
+				#expAll = 1
+				wrap = <ul>|</ul>
+
+				NO = 1
+				CUR = 1
+				ACT = 1
+
+				NO {
+					before.stdWrap.cObject = COA_INT
+					before.stdWrap.cObject {
+						20 = TEXT
+						20 {
+							data = levelfield: -1,tx_masterconfig_css_class,slide
+                                                        #data = levelfield: -1,tx_masterconfig_css_class
+							field = tx_masterconfig_css_class
+							noTrimWrap = | |">|
+						}
+					}
+					wrapItemAndSub = <li class="navLevel3 |</li> |*| <li class="navLevel3|</li>
+					ATagTitle.field = subtitle
+				}
+				ACT < .NO
+				ACT {
+					wrapItemAndSub = <li class="navLevel3 |</li> |*| <li class="navLevel3|</li>
+					ATagParams = class="on"
+				}
+				CUR < .ACT
+				CUR {
+					doNotLinkIt = 1
+					before.stdWrap.cObject {
+						20 {
+							noTrimWrap = | |"><strong>|
+						}
+					}
+					linkWrap = |</strong>
+					wrapItemAndSub = <li class="navLevel3 |</li> |*| <li class="navLevel3|</li>
+				}
+				#IFSUB=1
+			    #IFSUB{
+			    #  wrapItemAndSub = <li class="navLevel1 item-with-ul">|</li>
+			    #}
+
+			}
+			2 < .1
+			2 {
+				wrap = <ul class="navLevel4">|</ul>
+				NO.wrapItemAndSub = <li class="navLevel4|</li>
+				ACT.wrapItemAndSub = <li class="navLevel4|</li>
+				CUR.wrapItemAndSub = <li class="navLevel4|</li>
+				linkWrap = |</strong>
+
+			}
+                        
+			3 < .1
+			3 {
+				wrap = <ul class="navLevel5">|</ul>
+				NO.wrapItemAndSub = <li class="navLevel5|</li>
+				ACT.wrapItemAndSub = <li class="navLevel5|</li>
+				CUR.wrapItemAndSub = <li class="navLevel5|</li>
+				linkWrap = |</strong>
+			}
+
+		}
+	}
+
+// ---------------------------------------------------
+// Teaserliste Broschüren
+// ---------------------------------------------------
+
+	104 >
+    104 = COA
+    104 {
+        10 = HMENU
+        10 {
+            special = list
+            special.value.field = pages
+            #maxItems = 1
+            1 = TMENU
+            1 {
+                #wrap = <div class="csc-textpic csc-textpic-center csc-textpic-above ceWrap">|</div><div class="csc-textpic-clear"><!-- --></div>
+                #wrap = <div class="content">|</div>
+                NO = 1
+                NO {
+                    doNotLinkIt = 1
+                    stdWrap.cObject = COA
+                    stdWrap.cObject {
+                        10 = COA
+                        10 {
+                            10 = IMAGE
+                            10 {
+                                file {
+                                    import {
+                                        field = tx_masterconfig_teaserimage
+                                        wrap = uploads/media/ |
+                                        required = 1
+                                    }
+                                    maxW = 149m
+                                    #maxH = 207m
+                                }
+                                stdWrap {
+                                    #typolink.parameter.field = uid
+                                    wrap = <figure>|</figure>
+                                    required = 1
+                                }
+                            }
+                            20 = TEXT
+                            20 {
+                                field = title
+                                wrap = <h3>|</h3>
+                            }
+                            stdWrap {
+                                wrap = <header>|</header>
+                                required = 1
+                            }
+                        }
+
+                        20 = COA
+                        20 {
+                            10 = TEXT
+                            10 {
+                                field = abstract
+                                #stdWrap.parseFunc < tt_content.text.20.parseFunc
+                            }
+                            20 = TEXT
+                            20 {
+                                value = {$portal.langlabels.download}
+                                typolink.parameter.field = uid
+                                typolink.ATagParams = class="icon-Icon_Pdf-Download02 button BG-button"
+                                wrap = <p>|</p>
+                            }
+                            stdWrap {
+                                wrap = <div class="content">|</div>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stdWrap.wrap = |
+    }
+}
+
+// ---------------------------------------------------
+// Define column dependant default header type
+// ---------------------------------------------------
+
+temp.header_layout_columnDependent = CASE
+temp.header_layout_columnDependent {
+	key.field = colPos
+	2 = TEXT
+	2.value = 2
+	default = TEXT
+	default.value = {$content.defaultHeaderType}
+}
+
+lib.stdheader {
+	10.key.ifEmpty.cObject < temp.header_layout_columnDependent
+ 	#10.1.dataWrap = <header><h1{register:headerClass}>|</h1></header>
+	10.2.dataWrap = <header><h2{register:headerClass}>|</h2></header>
+	10.3.dataWrap = <header><h3{register:headerClass}>|</h3></header>
+	10.4.dataWrap = <header><h4{register:headerClass}>|</h4></header>
+	10.5.dataWrap = <header><h5{register:headerClass}>|</h5></header>
+	10.6 < .10.1
+	10.6.dataWrap = <header><h6{register:headerClass}>|</h6></header>
+
+	10.7 < .10.1
+	10.7.dataWrap = <header><h2 class="moduleHeader">|</h2></header>
+	10.8 < .10.1
+	10.8.dataWrap = <header><h3 class="moduleHeader">|</h3></header>
+	10.9 < .10.1
+	10.9.dataWrap = <header><h4 class="moduleHeader">|</h2></header>
+	10.10 < .10.1
+	10.10.dataWrap = <header><h5 class="moduleHeader">|</h3></header>
+	10.11 < .10.1
+	10.11.dataWrap = <header><h6 class="moduleHeader">|</h3></header>
+	stdWrap.dataWrap >
+}
+
+lib.stdheader_header < lib.stdheader
+lib.stdheader_header {
+	10.key.ifEmpty = 2
+	10.key.override = 2
+}
+tt_content.header.10 = < lib.stdheader_header

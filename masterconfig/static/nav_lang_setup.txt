@@ -1,0 +1,46 @@
+lib.nav.lang = COA
+lib.nav.lang {
+	10 = HMENU
+	10 {
+		special = language
+		special {
+			value = 0,2,3,4,5,6
+			normalWhenNoLanguage = 0
+		}
+		1 = TMENU
+		1 {
+			noBlur = 1
+			NO = 1
+			ACT = 1
+			USERDEF1 = 1
+			NO {
+				linkWrap = <option value="|</option>
+				typolink.returnLast = url
+				stdWrap {
+					setCurrent = Deutsch || English || Fran&ccedil;ais || Русский || Espa&ntilde;ol || Italiano
+					current = 1
+				}
+			}
+			ACT {
+				doNotShowLink = 1
+			}
+			USERDEF1 {
+				doNotShowLink = 1
+			}
+		}
+	}
+	stdWrap {
+		wrap = <form id="languageSwitch" class="languageSwitch" name="langSwitch" action="#" method="get" onChange="window.location=document.langSwitch.languageLink.options[document.langSwitch.languageLink.selectedIndex].value;"><select id="language" name="languageLink"><option>{$portal.langlabels.switchLang}</option>|</select></form>
+		required = 1
+				replacement {
+			10 {
+				search = </a>
+				replace =
+			}
+			20 {
+				search = <a href="
+				replace = 
+			}
+		}
+	}
+}

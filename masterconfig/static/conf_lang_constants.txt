@@ -1,0 +1,154 @@
+// Language dependent labels
+
+//Deutsch
+portal.langlabels {
+	totop = Nach oben
+	print = Drucken
+	more = Mehr
+	go2article = zum Artikel
+	download = Herunterladen
+	dateformat = %d.%m.%Y
+	mainnavsrhint = Hauptnavigation
+	jumptocontent = Springe zum Inhalt
+	mainnav = Springe zur Hauptnavigation
+	jumptotopics = Springe zu den wichtigen Themen
+	marginalsrhint = Weiterführende Informationen
+	search.alt = Suchfeld
+	search.srhint = Stichwortsuche
+	search.title = Suche
+	search.placeholder = Suchbegriff
+	search.submitvalue = Suche starten
+	orgname = Bundesanstalt für Landwirtschaft und Ernährung
+	#switchLang = Sprache
+	switchLang = Deutsch
+}
+
+//English
+[globalVar = GP:L=2]
+portal.headerbox.defaultstageimage = /fileadmin/SITE_MASTER/content/bilder/Buehnenbild/Buehnenbild_en.png
+portal.langlabels {
+	totop = Top
+	print = Print
+	more = More
+	go2article = skip to article
+	download = Download
+	dateformat = %d.%m.%Y
+	mainnavsrhint = Main navigation
+	jumptocontent = Skip to content
+	mainnav = Skip to main navigation
+	jumptotopics = Skip to important topics
+	marginalsrhint = Further information
+	search.alt = Search field
+	search.srhint = Keyword search
+	search.title = Search
+	search.placeholder = Search term
+	search.submitvalue = Start search
+	orgname = Federal Office for Agriculture and Food
+	#switchLang = Language
+	switchLang = English
+}
+[global]
+
+//Französisch
+[globalVar = GP:L=3]
+portal.headerbox.defaultstageimage = /fileadmin/SITE_MASTER/content/bilder/Buehnenbild/Buehnenbild_fr.png
+portal.langlabels {
+	totop = Vers le haut
+	print = Imprimer
+	more = En savoir plus
+	go2article = Lire l'article
+	download = Télécharger
+	dateformat = %d.%m.%Y
+	mainnavsrhint = Navigation principale
+	jumptocontent = Vers le contenu
+	mainnav = Vers la navigation principale
+	jumptotopics = Vers les sujets importants
+	marginalsrhint = Plus d'information
+	search.alt = Champ de recherche
+	search.srhint = Mot-clé
+	search.title = Recherche
+	search.placeholder = Clé de recherche
+	search.submitvalue = Commencer la recherche
+	orgname = Office fédéral de l'agriculture et de l'alimentation
+	#switchLang = Langue
+	switchLang = Français
+}
+[global]
+
+//Russisch
+[globalVar = GP:L=4]
+portal.headerbox.defaultstageimage = /fileadmin/SITE_MASTER/content/bilder/Buehnenbild/Buehnenbild_ru.png
+portal.langlabels {
+	totop = Вверх
+	print = Вниз
+	more = Далее
+	go2article = К статье
+	download = Скачать
+	dateformat = %d.%m.%Y
+	mainnavsrhint = Основной навигатор
+	jumptocontent = Перейти к содержанию
+	mainnav = Перейти в основной навигатор
+	jumptotopics = Перейти к важным темам
+	marginalsrhint = Дополнительная информация
+	search.alt = Поисковое поле
+	search.srhint = Поиск по ключевым словам
+	search.title = Поиск
+	search.placeholder = Ключевое слово
+	search.submitvalue = Начать поиск
+	orgname = Федеральное ведомство сельского хозяйства и пищевых продуктов
+	#switchLang = Язык
+	switchLang = Русский
+}
+[global]
+
+//Spanisch
+[globalVar = GP:L=5]
+portal.headerbox.defaultstageimage = /fileadmin/SITE_MASTER/content/bilder/Buehnenbild/Buehnenbild_es.png
+portal.langlabels {
+	totop = Volver arriba
+	print = Imprimir
+	more = Más
+	go2article = Saltar al artículo
+	download = Desgargar
+	dateformat = %d.%m.%Y
+	mainnavsrhint = Navegación principal
+	jumptocontent = Saltar al contenido
+	mainnav = Saltar a la navegación principal
+	jumptotopics = Saltar a los temas importantes
+	marginalsrhint = Información adicional
+	search.alt = Cuadro de búsqueda
+	search.srhint = Búsqueda de palabras clave
+	search.title = Búsqueda
+	search.placeholder = Término de búsqueda
+	search.submitvalue = Iniciar búsqueda
+	orgname = Oficina Federal para la Agricultura y la Alimentación
+	#switchLang = Lenguaje
+	switchLang = Español
+}
+[global]
+
+//Italienisch
+[globalVar = GP:L=6]
+portal.headerbox.defaultstageimage = /fileadmin/SITE_MASTER/content/bilder/Buehnenbild/Buehnenbild_it.png
+portal.langlabels {
+	totop = Di sopra
+	print = Stampa
+	more = Di più
+	go2article = Articolo
+	download = Scaricare
+	dateformat = %d.%m.%Y
+	mainnavsrhint = Linea navigativa
+	jumptocontent = Salta al contenuto
+	mainnav = Salta alla linea navigativa
+	jumptotopics = Salta al menu dei temi importanti
+	marginalsrhint = Informazioni ulteriori
+	search.alt = Ricerca
+	search.srhint = Ricerca lemma
+	search.title = Ricerca titolo
+	search.placeholder = Nozione
+	search.submitvalue = Avviare la ricerca
+	orgname = Ente Federale per Agricoltura e Alimentazione
+	#switchLang = Lingua
+	switchLang = Italiano
+}
+[global]

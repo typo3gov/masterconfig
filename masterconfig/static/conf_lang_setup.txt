@@ -1,0 +1,90 @@
+// ---------------------------------------------------
+// One tree configuration to translate website-content
+// ---------------------------------------------------
+
+// Modes of handling localization: default | content_fallback - [ Recommended ] | strict | ignore
+// default: Untranslated pages will fall back to the default language, lang. URL params are lost
+// content_fallback: e. g. "content_fallback ; 1,0" to fall back to the content of sys_language_uid 1 and if that is not present either, to default (0)
+// strict: The system will report an error if the requested translation does not exist
+// ignore: The system will always stay with the selected language
+
+config.sys_language_mode = content_fallback
+
+// Fallback of translated records: 0 | 1 | hideNonTranslated
+// 0: Shows translated record even when no reord in default language is present
+// 1: Shows all translated records
+// hideNonTranslated: Only translated records or those with Language "all" are shown
+
+config.sys_language_overlay = hideNonTranslated
+
+// Fallback for single fields in translated records 
+// When used in combination with config.sys_language_overlay = hideNonTranslated
+// Translated records will show content of field from default record as long as 
+// the field of the translated record is not empty
+
+config.sys_language_softMergeIfNotBlank = tt_content:image
+
+// -----------------------------------------------
+// Set languages  0=de/default 1=de 2=en 3=fr 5=es 6=it
+// -----------------------------------------------
+
+config {
+	language = de
+	locale_all = de_DE.utf8
+	sys_language_uid = 0
+	htmlTag_setParams = lang="de"
+}
+
+[globalVar = GP:L=1]
+config {
+	sys_language_uid = 1
+	language = de
+	locale_all = de_DE.utf8
+	htmlTag_setParams = lang="de"
+}
+[global]
+
+[globalVar = GP:L=2]
+config {
+	sys_language_uid = 2
+	language = en
+	locale_all = en_EN.utf8
+	htmlTag_setParams = lang="en"
+}
+[global]
+
+[globalVar = GP:L=3]
+config {
+	sys_language_uid = 3
+	language = fr
+	locale_all = fr_FR.utf8
+	htmlTag_setParams = lang="fr"
+}
+[global]
+
+[globalVar = GP:L=4]
+config {
+	sys_language_uid = 4
+	language = ru
+	locale_all = ru_RU.utf8
+	htmlTag_setParams = lang="ru"
+}
+[global]
+
+[globalVar = GP:L=5]
+config {
+	sys_language_uid = 5
+	language = es
+	locale_all = es_ES.utf8
+	htmlTag_setParams = lang="es"
+}
+[global]
+
+[globalVar = GP:L=6]
+config {
+	sys_language_uid = 6
+	language = it
+	locale_all = it_IT.utf8
+	htmlTag_setParams = lang="it"
+}
+[global]

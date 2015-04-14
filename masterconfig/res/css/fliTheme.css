@@ -1,0 +1,286 @@
+/* Diese Datei überschreibt BLE-Farben des master-ble mit den Farben des FLI
+   und macht so aus dem master-ble einen master-fli ;-)
+
+   Stand: 19.02.2015
+
+*/
+
+
+
+/* =========================================================================
+   = FLI - FARBANPASSUNGEN                                                =
+   =========================================================================
+
+   FLI-Streifen (Seitenkopf) 
+   ========================================================================= */
+
+html {
+	border-top: none;
+	padding-top: 0px;
+}
+body {
+	border-top-color: #2f5bb7; /* FLI-blau (dunkel) */
+}
+
+/* Allgemeine Farben und Hintergründe
+   ========================================================================= */
+
+/* selected text's background */
+::-moz-selection {
+	color: #fff;
+	background-color: rgba(46,94,125,0.75);
+	text-shadow: none;
+}
+
+::selection {
+	color: #fff;
+	background-color: rgba(46,94,125,0.75);
+	text-shadow: none;
+}
+a {
+	color: #333;
+	text-decoration: underline;
+}
+.serviceArea a,
+a.buttonBig,
+a.button,
+.breadcrumb a,
+.downloadList a,
+a:active,
+a:focus,
+a:hover {
+	text-decoration: none;
+}
+.toInPageNavigation a:before,
+.inPageNavigation li a:before,
+.linkList li a:before,
+=======
+a.buttonBig,
+a.button,
+.breadcrumb a,
+.downloadList a,
+a:active,
+a:focus,
+a:hover {
+	text-decoration: none;
+}
+a:before,
+.inPageNavigation .icon-Icon_InternerTextlink:before,
+.linkList .icon-Icon_InternerTextlink:before,
+.linkList .icon-Icon_ExternerTextlink:before {
+	text-decoration: none;
+}
+.icon-Icon_bersichtsseite:before {
+	color: #000;
+}
+.breadcrumb .icon-Icon_Startseite:before {
+	color: #fff;
+}
+.BG-darkAccent {
+	background-color: #2f5bb7; /*  FLI-blau (dunkel) */
+}
+.BG-lightAccentAlt3 {
+	background-color: #5C5C5C; /* FLI-grau */
+}
+.BG-button,
+.BG-lightAccentAlt1,
+.downloadList .moduleButton {
+	background-color: #2f5bb7; /*  FLI-blau (dunkel) */
+	color: #fff;
+}
+.teaser.calendar .date p a .day,
+.teaser.calendar .date p a .month {
+	color: #fff;
+}
+.BG-button:before,
+.BG-lightAccentAlt1:before {
+	color: #000;
+}
+.downloadList .moduleButton:before {
+	background-color: #2f5bb7; /*  FLI-blau (dunkel) */
+	color: #fff;
+}
+
+/* Boxes
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+[class$="Box"] {
+	background-image: url(../img/layout/bgInfoBox.png);
+}
+.successBox {
+	background-image: url(../img/layout/bgSuccessBox.png);
+}
+
+
+/* Box mit FLI-rot */
+
+.colspan4 .bordered {
+	border-color: #b71e3f;
+}
+.colspan8 .bordered {
+	border-color: #009636;
+}
+
+/* Spezielle Farben
+   ========================================================================= */
+
+/* Hauptnavigation
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.mainNav li a {
+    background-color: #fff;
+}
+
+/* Nav ab 3. Ebene (Linke Spalte)
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.subNav li a:active,
+.subNav li a:focus,
+.subNav li a:hover {
+	background-color: #C4C8CD;
+}
+.subNav ul li strong {
+	background-color: #fff;
+	font-weight: bold;
+	border-bottom-color: #C4C8CD;
+}
+.subNav ul li a,
+.subNav ul li strong {
+	border-bottom-color: #C4C8CD;
+}
+.subNav li strong:after {
+	display: none;
+}
+.subNav li li a {
+	background-color: #fff;
+}
+.subNav li li a:active,
+.subNav li li a:focus,
+.subNav li li a:hover {
+	background-color: #fff;
+	text-decoration: underline;
+}
+
+/* Bühne Startseite 
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.promotion {
+	background-color: rgba(46,94,125,0.75);
+}
+
+/* Breadcrumb Navigation
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+.breadcrumb a {
+  color: #fff;
+	background-color: #5C5C5C; /* FLI-grau */
+}
+
+
+/* Zwischenüberschriften in Artikeln
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+caption,
+.news-text-wrap h3,
+body .defaultContribution h3,
+body .defaultContribution h4,
+body .newsDate h3,
+body .newsDate h4 {
+	color: #000;
+}
+.teaser .date {
+    color: #2f5bb7; /*  FLI-blau (dunkel) */
+}
+
+/* Footer
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+body > footer {
+  background-color: #2f5bb7; /*  FLI-blau (dunkel) */
+}
+.controlElements {
+	border-bottom: 4px solid #357ae8; /* FLI-grau */
+}
+.controlElements a:before {
+	color: #000;
+}
+
+
+/* Forms
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+[name="submit"],
+.module .csc-mailform-submit {
+	background-color: #357ae8; /*  FLI-blau */
+	border-color: #2f5bb7; /*  FLI-blau (dunkel) */
+	color: #fff;
+}
+
+/* RMS  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+html #rms.formHeader ul li.current span:before {
+    border: 1px solid #2f5bb7; /*  FLI-blau (dunkel) */
+}
+html #rms .formHeader ul li span,
+html .formHeader ul li span:before,
+html .formHeader ul li.current span,
+html .formHeader ul li.current span:before {
+    color: #2f5bb7; /*  FLI-blau (dunkel) */
+}
+html #rms .formHeader ul li.current span:before {
+    border-color: #2f5bb7; /*  FLI-blau (dunkel) */
+}
+#rms .formHeader ul li.current span:before {
+    border: 1px solid #2f5bb7; /*  FLI-blau (dunkel) */
+}
+html div#rms input[type="submit"] {
+	background-color: #357ae8; /*  FLI-blau */
+	border-color: #2f5bb7; /*  FLI-blau (dunkel) */
+	color: #fff;
+}
+.antworten:before,
+.antworten:after,
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.antworten:after,
+.clearfix:after {
+    clear: both;
+}
+.antworten,
+.clearfix {
+    *zoom: 1;
+}
+
+/* =========================================================================
+   = FLI - ANPASSUNGEN  (AUßER FARBE)                                     =
+   ========================================================================= */
+
+
+
+/* Header
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.stage .center:last-child h1 {
+	margin: 17px 0;
+}
+.stage .center:last-child {
+	min-height: 76px;
+}
+
+
+/* Navi
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.mainNav ul.navLevel2 {
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+.mainNav ul.navLevel2 > li:first-child,
+.mainNav ul.navLevel2 > li:first-child a {
+  border-radius: 8px 8px 0 0;
+  background-clip: padding-box;
+}
+.mainNav ul.navLevel2 > li:last-child,
+.mainNav ul.navLevel2 > li:last-child a {
+  border-radius: 0 0 8px 8px;
+  background-clip: padding-box;
+}

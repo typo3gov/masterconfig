@@ -1,0 +1,91 @@
+
+# ==============================================
+# FE-Plugin configuration for EXT:news
+# ==============================================
+
+plugin.tx_news.settings.detail.showSocialShareButtons = 0
+
+plugin.tx_news.settings.detail.media.image.maxWidth =
+plugin.tx_news.settings.detail.media.image.maxHeight =
+plugin.tx_news.settings.detail.media.image.width =
+plugin.tx_news.settings.detail.media.image.height =
+
+plugin.tx_news.view.widget.Tx_News_ViewHelpers_Widget_PaginateViewHelper.templateRootPath = EXT:masterconfig/res/extensions/news/Templates/
+plugin.tx_news{
+	_LOCAL_LANG {
+		default {
+			more-link = To news item
+		}
+		de {
+			more-link = zur Nachricht
+		}
+		fr {
+			more-link = Vers la notice
+		}
+		ru {
+			more-link = К сообщению
+		}
+		es {
+			more-link = Saltar al mensaje
+		}
+		it {
+			more-link = Informazione
+		}
+	}
+
+	settings{
+		displayDummyIfNoMedia = 0
+		cropMaxCharacters = 230
+		list{
+            media {
+				image {
+					maxWidth = 630
+					maxHeight = 422
+				}
+			}
+			paginate {
+				itemsPerPage=10
+				insertAbove=TRUE
+				insertBelow=TRUE
+				lessPages=FALSE
+				maximumNumberOfLinks = 10
+				forcedNumberOfLinks=10
+				pagesBefore=10
+				pagesAfter=10
+			}
+		}
+		# --------------
+		#  Detail
+		# --------------
+		detail {
+			errorHandling = pageNotFoundHandler
+			registerProperties = keywords,title
+			showSocialShareButtons = 0
+
+			# media configuration
+			media {
+				image {
+						# choose the rel tag like gallery[fo]
+					lightbox = lightbox[myImageSet]
+					maxWidth = 282
+					maxHeight =
+				}
+
+				video {
+					width = 282
+					height = 300
+				}
+			}
+		}	
+
+	}
+} 
+[globalVar = TSFE:id = 2]
+	plugin.tx_news.settings.list.paginate.itemsPerPage = 2
+[global]
+
+config.tx_extbase.persistence.classes {
+    Tx_News_Domain_Model_NewsDefault.mapping.columns.tx_masterconfig_enddatetime.mapOnProperty = enddatetime
+    Tx_News_Domain_Model_NewsExternal.mapping.columns.tx_masterconfig_enddatetime.mapOnProperty = enddatetime
+    Tx_News_Domain_Model_NewsInternal.mapping.columns.tx_masterconfig_enddatetime.mapOnProperty = enddatetime
+}

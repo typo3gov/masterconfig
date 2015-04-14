@@ -1,0 +1,8 @@
+  # cat=basic/enable; type=boolean; label=Enable basic PageTSconfig
+setPageTSconfig = 1
+
+  # cat=basic/enable; type=boolean; label=Enable basic UserTSconfig for all users
+setUserTSconfig = 1
+
+  # cat=basic/enable; type=boolean; label=Enable basic RTE configuration
+setRTEconfig = 1
